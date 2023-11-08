@@ -1,6 +1,6 @@
 import { APIKey } from "./APIKey";
 
-export const fetchIdentityLocation = async (
+export const fetchLocationList = async (
   city: string = ""
 ): Promise<Array<{
   name: String;
@@ -10,7 +10,7 @@ export const fetchIdentityLocation = async (
   lon: number;
 }>> => {
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIKey}`
+    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIKey}`
   );
   let result = await response.json();
   return result;

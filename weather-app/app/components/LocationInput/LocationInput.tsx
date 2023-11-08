@@ -5,14 +5,20 @@ import { useState } from "react";
 
 /* Instruments */
 import styles from "./location.module.css";
-import { setLocationAsync, useDispatch } from "@/lib/redux";
+import {
+  setLocationListAsync,
+  useDispatch,
+  useSelector,
+  selectLocationList,
+} from "@/lib/redux";
 
 export const LocationInput = () => {
   const dispatch = useDispatch();
-  const [cityInput, setCityInput] = useState('');
+  const [cityInput, setCityInput] = useState("");
+  const locationList = useSelector(selectLocationList)
   const clickHandler = () => {
     console.log(cityInput);
-    dispatch(setLocationAsync(cityInput));
+    dispatch(setLocationListAsync(cityInput));
   };
 
   return (

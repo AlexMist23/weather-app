@@ -1,6 +1,6 @@
 /* Instruments */
 import { createAppAsyncThunk } from '@/lib/redux/createAppAsyncThunk'
-import { fetchIdentityLocation } from './fetchIdentityLocation'
+import { fetchLocationList } from './fetchLocationList'
 import { selectLocation } from './selectors'
 import { locationSlice } from './locationSlice'
 import type { ReduxThunkAction } from '@/lib/redux'
@@ -10,10 +10,10 @@ import type { ReduxThunkAction } from '@/lib/redux'
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
-export const setLocationAsync = createAppAsyncThunk(
-  'location/fetchIdentityLocation',
+export const setLocationListAsync = createAppAsyncThunk(
+  'location/fetchLocationList',
   async (name: string) => {
-    const response = await fetchIdentityLocation(name)
+    const response = await fetchLocationList(name)
     // The value we return becomes the `fulfilled` action payload
     console.log(response)
     return response

@@ -2,9 +2,10 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 /* Instruments */
-import { setLocationAsync } from "./thunks";
+import { setLocationListAsync } from "./thunks";
 
 const initialState: locationSliceState = {
+  locationList: [],
   location: {
     name: "London",
     country: "GB",
@@ -20,42 +21,45 @@ export const locationSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    set: (state, action) => {
-      state.location = {
-        name: action.payload.name,
-        country: action.payload.country,
-        state: action.payload.state,
-        lat: action.payload.lat,
-        lon: action.payload.lon,
-      };
+    setLocation: (state, action: PayloadAction<location>) => {
+      return (state = {
+        ...state,
+        location: {
+          name: action.payload.name,
+          country: action.payload.country,
+          state: action.payload.state,
+          lat: action.payload.lat,
+          lon: action.payload.lon,
+        },
+      });
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(setLocationAsync.pending, (state) => {
-        state.status = "loading";
+      .addCase(setLocationListAsync.pending, (state) => {
+        state = { ...state, status: "loading" };
       })
-      .addCase(setLocationAsync.fulfilled, (state, action) => {
-        state.status = "idle";
-        state.location = {
-          name: action.payload[0].name,
-          country: action.payload[0].country,
-          state: action.payload[0].state,
-          lat: action.payload[0].lat,
-          lon: action.payload[0].lon,
-        };
+      .addCase(setLocationListAsync.fulfilled, (state, action) => {
+        return (state = {
+          ...state,
+          status: "idle",
+          locationList: [...action.payload],
+        });
       });
   },
 });
 
 /* Types */
+export interface location {
+  name: String;
+  country: String;
+  state: String;
+  lat: number;
+  lon: number;
+}
+
 export interface locationSliceState {
-  location: {
-    name: String;
-    country: String;
-    state: String;
-    lat: number;
-    lon: number;
-  };
+  locationList: Array<location>;
+  location: location;
   status: string;
 }
