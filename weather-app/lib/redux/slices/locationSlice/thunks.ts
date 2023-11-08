@@ -1,6 +1,6 @@
 /* Instruments */
 import { createAppAsyncThunk } from '@/lib/redux/createAppAsyncThunk'
-import { fetchIdentityLocation } from './fetchIdentityCount'
+import { fetchIdentityLocation } from './fetchIdentityLocation'
 import { selectLocation } from './selectors'
 import { locationSlice } from './locationSlice'
 import type { ReduxThunkAction } from '@/lib/redux'
