@@ -5,14 +5,14 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { setLocationAsync } from "./thunks";
 
 const initialState: locationSliceState = {
-  location:{
+  location: {
     name: "London",
     country: "GB",
     state: "England",
     lat: 51.5073219,
     lon: -0.1276474,
   },
-  status: 'idle',
+  status: "idle",
 };
 
 export const locationSlice = createSlice({
@@ -21,11 +21,13 @@ export const locationSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     set: (state, action) => {
-      state.location.name = action.payload.name;
-      state.location.country = action.payload.country;
-      state.location.state = action.payload.state;
-      state.location.lat = action.payload.lat;
-      state.location.lon = action.payload.lon;
+      state.location = {
+        name: action.payload.name,
+        country: action.payload.country,
+        state: action.payload.state,
+        lat: action.payload.lat,
+        lon: action.payload.lon,
+      };
     },
   },
   extraReducers: (builder) => {
@@ -35,19 +37,25 @@ export const locationSlice = createSlice({
       })
       .addCase(setLocationAsync.fulfilled, (state, action) => {
         state.status = "idle";
+        state.location = {
+          name: action.payload[0].name,
+          country: action.payload[0].country,
+          state: action.payload[0].state,
+          lat: action.payload[0].lat,
+          lon: action.payload[0].lon,
+        };
       });
   },
 });
 
 /* Types */
 export interface locationSliceState {
-  
-  location:{
+  location: {
     name: String;
     country: String;
     state: String;
     lat: number;
     lon: number;
-  }
+  };
   status: string;
 }

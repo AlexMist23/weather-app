@@ -2,6 +2,7 @@
 import { Providers } from "@/lib/providers";
 import { Nav } from "./components/Nav";
 import { Location } from "./components/Location/Location";
+import { LocationInput } from "./components/LocationInput/LocationInput";
 
 /* Instruments */
 import styles from "./styles/layout.module.css";
@@ -14,6 +15,7 @@ export default function RootLayout(props: React.PropsWithChildren) {
         <body>
           <section className={styles.container}>
             <Location />
+            <LocationInput />
             <Nav />
 
             <main className={styles.main}>{props.children}</main>
