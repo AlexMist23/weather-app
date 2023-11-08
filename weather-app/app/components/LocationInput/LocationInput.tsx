@@ -7,15 +7,18 @@ import { useState } from "react";
 import styles from "./location.module.css";
 import {
   setLocationListAsync,
+  locationSlice,
   useDispatch,
   useSelector,
   selectLocationList,
 } from "@/lib/redux";
 
+
+
 export const LocationInput = () => {
   const dispatch = useDispatch();
   const [cityInput, setCityInput] = useState("");
-  const locationList = useSelector(selectLocationList)
+  const locationList = useSelector(selectLocationList);
   const clickHandler = () => {
     console.log(cityInput);
     dispatch(setLocationListAsync(cityInput));
@@ -34,6 +37,11 @@ export const LocationInput = () => {
         }}
       />
       <button onClick={clickHandler}>Search</button>
+      {locationList.map((location) => (
+        <li onClick={() => dispatch(locationSlice.actions.setLocation(location))}>
+          {location.name}, {location.state}, {location.country}
+        </li>
+      ))}
     </div>
   );
 };

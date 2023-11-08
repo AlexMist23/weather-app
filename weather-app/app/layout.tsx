@@ -14,9 +14,9 @@ export default function RootLayout(props: React.PropsWithChildren) {
       <html lang="en">
         <body>
           <section className={styles.container}>
+            <Nav />
             <Location />
             <LocationInput />
-            <Nav />
 
             <main className={styles.main}>{props.children}</main>
           </section>
