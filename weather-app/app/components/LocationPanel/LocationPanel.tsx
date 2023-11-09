@@ -1,14 +1,25 @@
 "use client";
 
 /* Core */
-import { useSelector, selectLocation } from "@/lib/redux";
+import {
+  useSelector,
+  selectLocation,
+  selectCurrentWeatherData,
+  setCurrentWeatherAsync,
+} from "@/lib/redux";
 
 /* Instruments */
 import styles from "./locationpanel.module.css";
-import { CurrentWeather } from "../CurrentWeather/CurrentWeather";
+import { CurrentWeather } from "./CurrentWeather/CurrentWeather";
+import { useDispatch } from "react-redux";
 
 export const LocationPanel = () => {
   const location = useSelector(selectLocation);
+  const currentWeather = useSelector(selectCurrentWeatherData);
+  const dispatch = useDispatch()<any>;
+  const currentWheatherUpdate = () => {
+    dispatch(setCurrentWeatherAsync({ lat: location.lat, lon: location.lon }));
+  };
   return (
     <div className={styles.LocationPanel}>
       <div>
@@ -16,7 +27,8 @@ export const LocationPanel = () => {
         <h2 className={styles.h2}>{location.country}</h2>
         <h2 className={styles.h2}>{location.state}</h2>
       </div>
-      <CurrentWeather />
+      <button onClick={currentWheatherUpdate}>Update</button>
+      <CurrentWeather currentWheather={currentWeather} />
     </div>
   );
 };
