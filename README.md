@@ -33,7 +33,7 @@ Setting up the Weather App is straightforward. Follow these steps:
    npm run dev
    ```
 
-For additional installation and setup instructions specific to Next.js, please refer to the Next.js documentation.
+For additional installation and setup instructions specific to Next.js, please refer to the Next.js [documentation](https://nextjs.org/docs/getting-started/installation).
 
 ## Usage
 
