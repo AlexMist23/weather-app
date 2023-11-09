@@ -1,17 +1,15 @@
 "use client";
 
-/* Core */
 import { useState } from "react";
-
-/* Instruments */
-import styles from "./locationInput.module.css";
 import {
   setLocationListAsync,
   locationSlice,
   useDispatch,
   useSelector,
   selectLocationList,
+  type location,
 } from "@/lib/redux";
+import styles from "./locationInput.module.css";
 
 export const LocationInput = () => {
   const dispatch = useDispatch();
@@ -28,7 +26,7 @@ export const LocationInput = () => {
     dispatch(locationSlice.actions.setLocation(location));
     // Close the list when an option is selected.
     LocationListResetHandler();
-    setCityInput('')
+    setCityInput("");
   };
   const LocationListResetHandler = () => {
     if (locationList) {
@@ -58,7 +56,7 @@ export const LocationInput = () => {
       </div>
       <div className={styles.ulContainer}>
         <ul className={styles.ul}>
-          {locationList.map((location) => (
+          {locationList?.map((location) => (
             <li className={styles.li} onClick={() => handleLiClick(location)}>
               {location.name}, {location.state}, {location.country}
             </li>
@@ -68,11 +66,3 @@ export const LocationInput = () => {
     </div>
   );
 };
-
-export interface location {
-  name: String;
-  country: String;
-  state: String;
-  lat: number;
-  lon: number;
-}

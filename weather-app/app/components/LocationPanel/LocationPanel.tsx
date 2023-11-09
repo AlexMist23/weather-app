@@ -4,8 +4,8 @@
 import { useSelector, selectLocation } from "@/lib/redux";
 
 /* Instruments */
-import {} from "@/lib/redux";
 import styles from "./locationpanel.module.css";
+import { CurrentWeather } from "../CurrentWeather/CurrentWeather";
 
 export const LocationPanel = () => {
   const location = useSelector(selectLocation);
@@ -16,7 +16,7 @@ export const LocationPanel = () => {
         <h2 className={styles.h2}>{location.country}</h2>
         <h2 className={styles.h2}>{location.state}</h2>
       </div>
-      
+      <CurrentWeather />
     </div>
   );
 };

@@ -56,16 +56,16 @@ export const locationSlice = createSlice({
 });
 
 /* Types */
+export interface locationSliceState {
+  locationList: Array<location> | null;
+  location: location;
+  status: string;
+}
+
 export interface location {
   name: String;
   country: String;
   state: String;
   lat: number;
   lon: number;
-}
-
-export interface locationSliceState {
-  locationList: Array<location>;
-  location: location;
-  status: string;
 }

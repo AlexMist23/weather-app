@@ -1,12 +1,11 @@
 /* Instruments */
-import { createAppAsyncThunk } from '@/lib/redux/createAppAsyncThunk'
-import { fetchCurrentWeather } from './fetchCurrentWeather'
+import { createAppAsyncThunk } from "@/lib/redux/createAppAsyncThunk";
+import { fetchCurrentWeather } from "./fetchCurrentWeather";
 
 export const setCurrentWeatherAsync = createAppAsyncThunk(
-  'location/fetchCurrentWeather',
-  async (cord: {lon:number, lat:number}) => {
-    const response = await fetchCurrentWeather(cord.lat, cord.lon)
-
-    return response
+  "currentWeather/fetchCurrentWeather",
+  async (coord: any) => {
+    const response = await fetchCurrentWeather(coord.lat, coord.lon);
+    return response;
   }
-)
+);
