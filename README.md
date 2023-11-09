@@ -71,25 +71,9 @@ This project was inspired by the need to strengthen my portfolio, and I'd like t
 
 The future development of the Weather App will focus on enhancing the user experience by introducing interactive and informative graphs to present broadcast data in a clear and visually stunning manner.
 
-## Contributions
-
-No external contributions are currently required for this project.
-
-## Sponsors
-
-The Weather App is currently not sponsored by any individuals or organizations.
-
-## Related Projects
-
-This project is a solo effort, created entirely by me.
-
 ## Author
 
 - Aleksander Misterkiewicz
-
-## License
-
-This project is licensed under the Apache License Version 2.0, January 2004 (http://www.apache.org/licenses/).
 
 ## Acknowledgments
 
