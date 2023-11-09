@@ -1,8 +1,9 @@
 /* Components */
 import { Providers } from "@/lib/providers";
 import { Nav } from "./components/Nav";
-import { Location } from "./components/Location/Location";
+import { Analytics } from "@vercel/analytics/react";
 import { LocationInput } from "./components/LocationInput/LocationInput";
+import { LocationPanel } from "./components/LocationPanel/LocationPanel";
 
 /* Instruments */
 import styles from "./styles/layout.module.css";
@@ -14,12 +15,14 @@ export default function RootLayout(props: React.PropsWithChildren) {
       <html lang="en">
         <body>
           <section className={styles.container}>
-            <Nav />
-            <Location />
+            <LocationPanel />
+          </section>
+          <section className={styles.container}>
             <LocationInput />
-
+            <Nav />
             <main className={styles.main}>{props.children}</main>
           </section>
+          <Analytics />
         </body>
       </html>
     </Providers>

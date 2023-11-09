@@ -1,7 +1,7 @@
 "use client";
 
 /* Core */
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 /* Instruments */
 import styles from "./locationInput.module.css";
@@ -28,6 +28,7 @@ export const LocationInput = () => {
     dispatch(locationSlice.actions.setLocation(location));
     // Close the list when an option is selected.
     LocationListResetHandler();
+    setCityInput('')
   };
   const LocationListResetHandler = () => {
     if (locationList) {

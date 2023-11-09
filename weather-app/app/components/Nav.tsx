@@ -26,14 +26,6 @@ export const Nav = () => {
       >
         current-weather
       </Link>
-      <Link
-        className={`${styles.link} ${
-          pathname === '/counter' ? styles.active : ''
-        }`}
-        href="/counter"
-      >
-        current-weather
-      </Link>
     </nav>
   )
 }

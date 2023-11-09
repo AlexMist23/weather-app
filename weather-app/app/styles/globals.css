@@ -10,6 +10,7 @@
 
 body{
   color-scheme: dark;
+  display: flex;
 }
 
 body.dark-theme {

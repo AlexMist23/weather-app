@@ -14,6 +14,6 @@
 .link.active {
   text-decoration: underline;
 }
-
-@media (prefers-reduced-motion: no-preference) {
+.container {
+  margin: 2em;
 }
