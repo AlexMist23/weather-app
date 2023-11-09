@@ -4,8 +4,8 @@ import { fetchCurrentWeather } from "./fetchCurrentWeather";
 
 export const setCurrentWeatherAsync = createAppAsyncThunk(
   "currentWeather/fetchCurrentWeather",
-  async (coord: any) => {
-    const response = await fetchCurrentWeather(coord.lat, coord.lon);
+  async (coord: { lat: number; lon: number }) => {
+    const response = await fetchCurrentWeather(coord);
     return response;
   }
 );
