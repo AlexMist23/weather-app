@@ -5,37 +5,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { setCurrentWeatherAsync } from "./thunks";
 
 const initialState: currentWeatherSliceState = {
-  data: {
-    coord: { lon: -0.1278, lat: 51.5074 },
-    weather: [
-      { id: 500, main: "Rain", description: "light rain", icon: "10n" },
-    ],
-    base: "stations",
-    main: {
-      temp: 280.82,
-      feels_like: 277.77,
-      temp_min: 279,
-      temp_max: 282.14,
-      pressure: 992,
-      humidity: 85,
-    },
-    visibility: 10000,
-    wind: { speed: 5.14, deg: 240 },
-    rain: { "1h": 0.91 },
-    clouds: { all: 40 },
-    dt: 1699556028,
-    sys: {
-      type: 2,
-      id: 2075535,
-      country: "GB",
-      sunrise: 1699513644,
-      sunset: 1699546876,
-    },
-    timezone: 0,
-    id: 2643743,
-    name: "London",
-    cod: 200,
-  },
+  data: null,
   status: "idle",
 };
 
@@ -44,9 +14,10 @@ export const currentWeatherSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    clear: (state) => {
+    clearData: (state) => {
       return (state = {
         ...state,
+        data: null
       });
     },
   },
@@ -68,7 +39,7 @@ export const currentWeatherSlice = createSlice({
 /* Types */
 
 export interface currentWeatherSliceState {
-  data: currentWeather;
+  data: currentWeather | null;
   status: string;
 }
 
@@ -107,5 +78,5 @@ export interface currentWeather {
   timezone: number;
   id: number;
   name: string;
-  cod: number;
-}
+  cod: number
+} 
