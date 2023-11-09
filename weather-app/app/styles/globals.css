@@ -1,3 +1,22 @@
+:root {
+  color-scheme: dark;
+  --color-berkeleyblue-8: #061423;
+  --color-berkeleyblue: #12355b;
+  --color-ghostwhite: #f0eff4;
+  --color-air-orangepeel: #ff9f1c;
+  --color-jet: #2a2b2e;
+  --color-rich-black: #00171f;
+}
+
+body{
+  color-scheme: dark;
+}
+
+body.dark-theme {
+  color-scheme: dark;
+}
+
+
 html,
 body {
   min-height: 100vh;
@@ -14,3 +33,4 @@ a {
 * {
   box-sizing: border-box;
 }
+

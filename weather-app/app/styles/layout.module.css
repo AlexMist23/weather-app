@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   padding: 8px;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(3px + 2vmin);
 }
 
 .link:hover {
