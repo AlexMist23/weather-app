@@ -12,12 +12,10 @@ The Weather App is a demonstration of my skills, designed to showcase my profici
 - [License](#license)
 - [Credits](#credits)
 - [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
 - [Roadmap](#roadmap)
-- [Contributions](#contributions)
-- [Sponsors](#sponsors)
-- [Related Projects](#related-projects)
 - [Author](#author)
+- [Acknowledgements](#acknowledgements)
+- [Inspiration](#inspiration)
 
 ## Installation
 
@@ -62,10 +60,6 @@ For any inquiries or collaboration opportunities, you can reach me through the f
 
 - Email: aleksander.misterkiewicz@outlook.com
 - LinkedIn: [Aleksander Misterkiewicz](https://www.linkedin.com/in/aleksandermst/)
-
-## Acknowledgements
-
-This project was inspired by the need to strengthen my portfolio, and I'd like to thank all the developers who contribute to open-source projects that make endeavors like this one possible.
 
 ## Roadmap
 
