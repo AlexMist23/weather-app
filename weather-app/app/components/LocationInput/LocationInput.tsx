@@ -1,7 +1,7 @@
 "use client";
 
 /* Core */
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 /* Instruments */
 import styles from "./locationInput.module.css";
@@ -20,14 +20,22 @@ export const LocationInput = () => {
   const SearchHandler = () => {
     dispatch(setLocationListAsync(cityInput));
   };
-
+  const handleInputBlur = () => {
+    // Close the list when input loses focus.
+    LocationListResetHandler();
+  };
+  const handleLiClick = (location: location) => {
+    dispatch(locationSlice.actions.setLocation(location));
+    // Close the list when an option is selected.
+    LocationListResetHandler();
+  };
+  const LocationListResetHandler = () => {
+    if (locationList) {
+      dispatch(locationSlice.actions.clearLocationList());
+    }
+  };
   return (
-    <div
-      className={styles.locationInput}
-      onBlur={() => {
-        console.log("OUT");
-      }}
-    >
+    <div className={styles.locationInput}>
       <div className={styles.inputContainer}>
         <input
           onKeyDown={(e) => {
@@ -41,6 +49,7 @@ export const LocationInput = () => {
           onChange={(e) => {
             setCityInput(e.target.value);
           }}
+          onBlur={handleInputBlur}
         />
         <button className={styles.button} onClick={SearchHandler}>
           Search
@@ -49,12 +58,7 @@ export const LocationInput = () => {
       <div className={styles.ulContainer}>
         <ul className={styles.ul}>
           {locationList.map((location) => (
-            <li
-              className={styles.li}
-              onClick={() =>
-                dispatch(locationSlice.actions.setLocation(location))
-              }
-            >
+            <li className={styles.li} onClick={() => handleLiClick(location)}>
               {location.name}, {location.state}, {location.country}
             </li>
           ))}
@@ -63,3 +67,11 @@ export const LocationInput = () => {
     </div>
   );
 };
+
+export interface location {
+  name: String;
+  country: String;
+  state: String;
+  lat: number;
+  lon: number;
+}
