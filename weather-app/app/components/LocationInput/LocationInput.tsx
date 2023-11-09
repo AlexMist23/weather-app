@@ -17,15 +17,22 @@ export const LocationInput = () => {
   const dispatch = useDispatch();
   const [cityInput, setCityInput] = useState("");
   const locationList = useSelector(selectLocationList);
-  const SearchClickHandler = () => {
-    console.log(cityInput);
+  const SearchHandler = () => {
     dispatch(setLocationListAsync(cityInput));
   };
 
   return (
-    <div className={styles.locationInput}>
+    <div
+      className={styles.locationInput}
+      onBlur={() => {
+        console.log("OUT");
+      }}
+    >
       <div className={styles.inputContainer}>
         <input
+          onKeyDown={(e) => {
+            if (e.key == "Enter") SearchHandler();
+          }}
           className={styles.input}
           type="text"
           placeholder="Input the City"
@@ -35,7 +42,7 @@ export const LocationInput = () => {
             setCityInput(e.target.value);
           }}
         />
-        <button className={styles.button} onClick={SearchClickHandler}>
+        <button className={styles.button} onClick={SearchHandler}>
           Search
         </button>
       </div>

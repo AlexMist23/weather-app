@@ -30,7 +30,7 @@
 }
 .li {
   padding: 0.2em 1em;
-  border: 0.01em rgb(45, 45, 45) solid
+  border: 0.01em rgb(45, 45, 45) solid;
 }
 .li:hover {
   background-color: rgb(40, 40, 40);
