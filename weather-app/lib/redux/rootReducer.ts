@@ -1,6 +1,7 @@
 /* Instruments */
-import {locationSlice } from './slices'
+import { locationSlice, currentWeatherSlice } from "./slices";
 
 export const reducer = {
-  location: locationSlice.reducer
-}
+  location: locationSlice.reducer,
+  currentWeather: currentWeatherSlice.reducer,
+};
