@@ -1,8 +1,8 @@
 /* Components */
 export default function IndexPage() {
-  return <></>
+  return <></>;
 }
 
 export const metadata = {
-  title: 'Redux Toolkit',
-}
+  title: "Redux Toolkit",
+};
