@@ -33,6 +33,12 @@ export const locationSlice = createSlice({
         },
       });
     },
+    clearLocationList: (state) => {
+      return (state = {
+        ...state,
+        locationList: [],
+      });
+    },
   },
   extraReducers: (builder) => {
     builder
