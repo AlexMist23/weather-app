@@ -1,4 +1,5 @@
 /* Instruments */
 import type { ReduxState } from '@/lib/redux'
 
-export const selectCurrentWeather = (state: ReduxState) => state.currentWeather.data
+export const selectCurrentWeatherData = (state: ReduxState) => state.currentWeather.data
+export const selectCurrentWeatherStatus = (state: ReduxState) => state.currentWeather.status
