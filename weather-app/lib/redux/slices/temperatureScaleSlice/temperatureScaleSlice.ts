@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: temperatureScaleSliceState = {
-  scale: "celcius",
+  scale: "Celcius",
 };
 
 export const temperatureScaleSlice = createSlice({
