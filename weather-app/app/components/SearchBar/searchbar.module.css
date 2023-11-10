@@ -1,32 +1,37 @@
-.locationInput {
+.searchBar {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  width: 15em;
 }
 
 .inputContainer {
   display: flex;
   width: inherit;
+  width: calc(40% + 2em);
+  height: calc(20% + 2em);
 }
+
 .button {
+  color: var(--color-ghostwhite);
+  background-color: var(--color-berkeleyblue);
+  margin: auto;
 }
 
 .input {
-  width: 100%;
+  color: var(--color-berkeleyblue);
+  margin: auto;
+  width: clamp(20%,80%,90%)
 }
 
 .ulContainer {
   width: inherit;
 }
+
 .ul {
   padding: 0;
   list-style: none;
   margin: 0;
   position: absolute;
   width: inherit;
-  background-color: black;
 }
 .li {
   padding: 0.2em 1em;

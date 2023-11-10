@@ -9,12 +9,14 @@ import {
   selectLocationList,
   type location,
 } from "@/lib/redux";
-import styles from "./locationInput.module.css";
+import styles from "./searchbar.module.css";
 
-export const LocationInput = () => {
+export const SearchBar = () => {
   const dispatch = useDispatch();
+
   const [cityInput, setCityInput] = useState("");
   const locationList = useSelector(selectLocationList);
+
   const SearchHandler = () => {
     dispatch(setLocationListAsync(cityInput));
   };
@@ -34,7 +36,7 @@ export const LocationInput = () => {
     }
   };
   return (
-    <div className={styles.locationInput}>
+    <div className={styles.searchBar}>
       <div className={styles.inputContainer}>
         <input
           onKeyDown={(e) => {
@@ -56,7 +58,7 @@ export const LocationInput = () => {
       </div>
       <div className={styles.ulContainer}>
         <ul className={styles.ul}>
-          {locationList?.map((location) => (
+          {locationList?.list.map((location: location) => (
             <li className={styles.li} onClick={() => handleLiClick(location)}>
               {location.name}, {location.state}, {location.country}
             </li>

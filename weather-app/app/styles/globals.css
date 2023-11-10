@@ -3,8 +3,8 @@
   --color-berkeleyblue: #12355b;
   --color-ghostwhite: #f0eff4;
   --color-air-orangepeel: #ff9f1c;
-  --color-picton-blue: #00A6FB;
-  --color-battleship-gray: #74776B;
+  --color-picton-blue: #00a6fb;
+  --color-battleship-gray: #74776b;
 }
 
 body {
@@ -37,6 +37,19 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input {
+  border-radius: 0;
+  border: 0;
+}
+
+input:focus {
+  outline: 0;
+}
+
+button {
+  border: 0;
 }
 
 * {

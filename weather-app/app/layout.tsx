@@ -2,7 +2,7 @@
 import { Providers } from "@/lib/providers";
 import { Nav } from "./components/Nav/Nav";
 import { Analytics } from "@vercel/analytics/react";
-import { LocationInput } from "./components/SearchBar/LocationInput";
+import { SearchBar } from "./components/SearchBar/SearchBar";
 import { LocationPanel } from "./components/LocationPanel/LocationPanel";
 
 /* Instruments */
@@ -18,7 +18,7 @@ export default function RootLayout(props: React.PropsWithChildren) {
             <LocationPanel />
           </section>
           <section className={styles.rightPanel}>
-            <LocationInput />
+            <SearchBar />
             <Nav />
             <main className={styles.main}>{props.children}</main>
           </section>

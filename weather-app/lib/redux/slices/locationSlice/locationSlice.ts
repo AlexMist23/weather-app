@@ -5,15 +5,18 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { setLocationListAsync } from "./thunks";
 
 const initialState: locationSliceState = {
-  locationList: [],
+  locationList: {
+    isLoading: false,
+    list: [],
+  },
   location: {
     name: "London",
     country: "GB",
     state: "England",
     lat: 51.5073219,
     lon: -0.1276474,
+    local_names: {},
   },
-  status: "idle",
 };
 
 export const locationSlice = createSlice({
@@ -30,26 +33,37 @@ export const locationSlice = createSlice({
           state: action.payload.state,
           lat: action.payload.lat,
           lon: action.payload.lon,
+          local_names: action.payload.local_names,
         },
       });
     },
     clearLocationList: (state) => {
       return (state = {
         ...state,
-        locationList: [],
+        locationList: {
+          isLoading: false,
+          list: [],
+        },
       });
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(setLocationListAsync.pending, (state) => {
-        state = { ...state, status: "loading" };
-      })
-      .addCase(setLocationListAsync.fulfilled, (state, action) => {
         return (state = {
           ...state,
-          status: "idle",
-          locationList: [...action.payload],
+          locationList: { list: [...state.locationList.list], isLoading: true },
+        });
+      })
+
+      .addCase(setLocationListAsync.fulfilled, (state, action) => {
+        console.log(action.payload);
+        return (state = {
+          ...state,
+          locationList: {
+            isLoading: false,
+            list: [...action.payload],
+          },
         });
       });
   },
@@ -57,9 +71,11 @@ export const locationSlice = createSlice({
 
 /* Types */
 export interface locationSliceState {
-  locationList: Array<location> | null;
+  locationList: {
+    list: Array<location> | any;
+    isLoading: boolean;
+  };
   location: location;
-  status: string;
 }
 
 export interface location {
@@ -68,4 +84,5 @@ export interface location {
   state: string;
   lat: number;
   lon: number;
+  local_names: any;
 }
