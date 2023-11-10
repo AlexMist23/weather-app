@@ -22,7 +22,7 @@ export const LocationPanel = () => {
   const currentWheatherUpdate = () => {
     dispatch(setCurrentWeatherAsync({ lat: location.lat, lon: location.lon }));
   };
-  const temperatureScale = useSelector(selectTemperatureScale)
+  const temperatureScale = useSelector(selectTemperatureScale);
   useEffect(() => {
     currentWheatherUpdate();
   }, [location]);
@@ -34,7 +34,10 @@ export const LocationPanel = () => {
         <h2 className={styles.h2}>{location.country}</h2>
         <h2 className={styles.h2}>{location.state}</h2>
       </div>
-      <CurrentWeather currentWheather={currentWeather} temperatureScale={temperatureScale} />
+      <CurrentWeather
+        currentWheather={currentWeather}
+        temperatureScale={temperatureScale}
+      />
     </div>
   );
 };

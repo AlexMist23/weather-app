@@ -22,11 +22,13 @@ The Weather App is a demonstration of my skills, designed to showcase my profici
 Setting up the Weather App is straightforward. Follow these steps:
 
 1. Navigate to the application's root directory:
+
    ```bash
    cd weather-app
    ```
 
 2. Begin by installing the necessary npm modules:
+
    ```bash
    npm install
    ```

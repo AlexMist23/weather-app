@@ -1,11 +1,16 @@
 "use client";
 
-import {type currentWeather } from "@/lib/redux";
+import { type currentWeather } from "@/lib/redux";
 import { convertTemp } from "@/lib/tempConvert";
 import styles from "./currentweather.module.css";
 
-export const CurrentWeather: React.FC<CurrentWeatherComponentProps> = ({currentWheather, temperatureScale}) => {
-  const {temp, feels_like, temp_min, temp_max, pressure, humidity} = {...currentWheather?.main}
+export const CurrentWeather: React.FC<CurrentWeatherComponentProps> = ({
+  currentWheather,
+  temperatureScale,
+}) => {
+  const { temp, feels_like, temp_min, temp_max, pressure, humidity } = {
+    ...currentWheather?.main,
+  };
 
   return (
     <div className={styles.container}>
@@ -20,6 +25,6 @@ export const CurrentWeather: React.FC<CurrentWeatherComponentProps> = ({currentW
 };
 
 export interface CurrentWeatherComponentProps {
-  currentWheather: currentWeather | null,
-  temperatureScale: string
+  currentWheather: currentWeather | null;
+  temperatureScale: string;
 }

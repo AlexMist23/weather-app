@@ -8,15 +8,13 @@
   --color-rich-black: #00171f;
 }
 
-body{
+body {
   color-scheme: light;
-
 }
 
 body.dark-theme {
   color-scheme: dark;
 }
-
 
 html,
 body {
@@ -36,4 +34,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
