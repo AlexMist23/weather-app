@@ -14,10 +14,10 @@ export default function RootLayout(props: React.PropsWithChildren) {
     <Providers>
       <html lang="en">
         <body>
-          <section className={styles.container}>
+          <section className={styles.leftPanel}>
             <LocationPanel />
           </section>
-          <section className={styles.container}>
+          <section className={styles.rightPanel}>
             <LocationInput />
             <Nav />
             <main className={styles.main}>{props.children}</main>

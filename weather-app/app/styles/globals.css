@@ -1,5 +1,5 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --color-berkeleyblue-8: #061423;
   --color-berkeleyblue: #12355b;
   --color-ghostwhite: #f0eff4;
@@ -9,8 +9,8 @@
 }
 
 body{
-  color-scheme: dark;
-  display: flex;
+  color-scheme: light;
+
 }
 
 body.dark-theme {
@@ -24,6 +24,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;
+  display: flex;
+  background-color: var(--color-ghostwhite);
 }
 
 a {

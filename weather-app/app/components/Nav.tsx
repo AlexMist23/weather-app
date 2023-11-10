@@ -16,15 +16,31 @@ export const Nav = () => {
         className={`${styles.link} ${pathname === '/' ? styles.active : ''}`}
         href="/"
       >
-        Home
+        Current Weather
       </Link>
       <Link
-        className={`${styles.link} ${
-          pathname === '/current-weather' ? styles.active : ''
-        }`}
-        href="/current-weather"
+        className={`${styles.link} ${pathname === '/' ? styles.active : ''}`}
+        href="/"
       >
-        current-weather
+        Today
+      </Link>
+      <Link
+        className={`${styles.link} ${pathname === '/' ? styles.active : ''}`}
+        href="/"
+      >
+        5 Day
+      </Link>
+      <Link
+        className={`${styles.link} ${pathname === '/' ? styles.active : ''}`}
+        href="/"
+      >
+        Maps
+      </Link>
+      <Link
+        className={`${styles.link} ${pathname === '/' ? styles.active : ''}`}
+        href="/"
+      >
+        Air Polution
       </Link>
     </nav>
   )

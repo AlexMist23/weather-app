@@ -15,5 +15,12 @@
   text-decoration: underline;
 }
 .container {
-  margin: 2em;
+  padding: 2em;
+}
+.leftPanel {
+  display: flex;
+  justify-content: center;
+  width: 15em;
+  color: var(--color-ghostwhite);
+  background-color: var(--color-berkeleyblue);
 }

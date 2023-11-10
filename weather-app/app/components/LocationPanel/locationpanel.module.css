@@ -1,7 +1,9 @@
 .LocationPanel {
-  background-color: grey;
-  width: 20em;
-  height: 50em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em;
 }
 
 .h1 {
