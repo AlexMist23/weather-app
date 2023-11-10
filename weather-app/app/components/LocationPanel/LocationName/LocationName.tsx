@@ -3,7 +3,7 @@
 /* Core */
 
 /* Instruments */
-import styles from "./location.module.css";
+import styles from "./locationname.module.css";
 
 export const Location: React.FC<LocationProps> = ({ name, country, state, }) => {
   return (

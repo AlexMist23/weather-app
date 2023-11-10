@@ -6,16 +6,18 @@ import { useEffect } from "react";
 /* Instruments */
 import {
   useSelector,
+  useDispatch,
   selectLocation,
   selectCurrentWeatherData,
-  setCurrentWeatherAsync,
   selectTemperatureScale,
-  useDispatch,
+  setCurrentWeatherAsync,
 } from "@/lib/redux";
 
 import styles from "./locationpanel.module.css";
+
+/* Components */
 import { CurrentWeather } from "./CurrentWeather/CurrentWeather";
-import { Location } from "./Location/Location";
+import { Location } from "./LocationName/LocationName";
 
 export const LocationPanel = () => {
   const dispatch = useDispatch();
