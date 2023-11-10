@@ -63,9 +63,9 @@ export interface locationSliceState {
 }
 
 export interface location {
-  name: String;
-  country: String;
-  state: String;
+  name: string;
+  country: string;
+  state: string;
   lat: number;
   lon: number;
 }

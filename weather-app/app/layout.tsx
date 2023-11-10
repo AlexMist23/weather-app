@@ -2,7 +2,7 @@
 import { Providers } from "@/lib/providers";
 import { Nav } from "./components/Nav";
 import { Analytics } from "@vercel/analytics/react";
-import { LocationInput } from "./components/LocationInput/LocationInput";
+import { LocationInput } from "./components/SearchBar/LocationInput";
 import { LocationPanel } from "./components/LocationPanel/LocationPanel";
 
 /* Instruments */

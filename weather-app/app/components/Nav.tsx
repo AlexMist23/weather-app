@@ -19,26 +19,26 @@ export const Nav = () => {
         Current Weather
       </Link>
       <Link
-        className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
-        href="/"
+        className={`${styles.link} ${pathname === "/today" ? styles.active : ""}`}
+        href="/today"
       >
         Today
       </Link>
       <Link
-        className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
-        href="/"
+        className={`${styles.link} ${pathname === "/5-day" ? styles.active : ""}`}
+        href="/5-day"
       >
         5 Day
       </Link>
       <Link
-        className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
-        href="/"
+        className={`${styles.link} ${pathname === "/5-day" ? styles.active : ""}`}
+        href="/5-day"
       >
         Maps
       </Link>
       <Link
-        className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
-        href="/"
+        className={`${styles.link} ${pathname === "/air-polution" ? styles.active : ""}`}
+        href="/air-polution"
       >
         Air Polution
       </Link>
