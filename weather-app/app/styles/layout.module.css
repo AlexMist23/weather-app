@@ -1,3 +1,4 @@
+/* Navigation Panel */
 .nav {
   display: flex;
   align-items: center;
@@ -31,10 +32,26 @@
 .container {
   padding: 2em;
 }
+
+/* First Panel */
 .leftPanel {
   display: flex;
   justify-content: center;
-  width: 15em;
+  width: clamp(20em, 30%, 40%);
   color: var(--color-ghostwhite);
   background-color: var(--color-berkeleyblue);
+}
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-berkeleyblue-8);
+  background-color: var(----color-ghostwhite);
+  margin: 0
+  
+}
+@media only screen and (max-width: 450px) {
+  .leftPanel {
+    width: 100vw;
+  }
 }
