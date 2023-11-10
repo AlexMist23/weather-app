@@ -10,7 +10,7 @@ const initialState: currentWeatherSliceState = {
 };
 
 export const currentWeatherSlice = createSlice({
-  name: "broadcast",
+  name: "currentWeather",
   initialState,
   reducers: {
     clearData: (state) => {
