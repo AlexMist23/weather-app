@@ -1,3 +1,10 @@
-.locationCountry{
-  font-size: small;
+.img {
+  width: 100%;
+  align-self: center;
+}
+
+.div {
+  display: flex;
+  width: 70%;
+  aspect-ratio: 1/1;
 }

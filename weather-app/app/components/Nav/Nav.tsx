@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 /* Instruments */
-import styles from "../styles/layout.module.css";
+import styles from "./nav.module.css";
 
 export const Nav = () => {
   const pathname = usePathname();
@@ -31,8 +31,8 @@ export const Nav = () => {
         5 Day
       </Link>
       <Link
-        className={`${styles.link} ${pathname === "/5-day" ? styles.active : ""}`}
-        href="/5-day"
+        className={`${styles.link} ${pathname === "/Maps" ? styles.active : ""}`}
+        href="/Maps"
       >
         Maps
       </Link>

@@ -18,6 +18,7 @@ import styles from "./locationpanel.module.css";
 /* Components */
 import { CurrentWeather } from "./CurrentWeather/CurrentWeather";
 import { Location } from "./LocationName/LocationName";
+import { MainIcon } from "./MainIcon/MainIcon";
 
 export const LocationPanel = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ export const LocationPanel = () => {
         country={location.country}
         state={location.state}
       />
+      <MainIcon iconName={currentWeather?.weather[0].icon}/>
       <CurrentWeather
         currentWheather={currentWeather}
         temperatureScale={temperatureScale}

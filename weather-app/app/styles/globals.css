@@ -3,8 +3,8 @@
   --color-berkeleyblue: #12355b;
   --color-ghostwhite: #f0eff4;
   --color-air-orangepeel: #ff9f1c;
-  --color-jet: #2a2b2e;
-  --color-rich-black: #00171f;
+  --color-picton-blue: #00A6FB;
+  --color-battleship-gray: #74776B;
 }
 
 body {
@@ -18,6 +18,7 @@ body.dark-theme {
 html,
 body {
   min-height: 100vh;
+  min-width: 100vw;
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;

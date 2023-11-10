@@ -3,20 +3,16 @@
 /* Core */
 
 /* Instruments */
-import styles from "./locationname.module.css";
-
-export const Location: React.FC<LocationProps> = ({ name, country, state, }) => {
+import styles from "./mainicon.module.css";
+export const MainIcon: React.FC<MainIconProps> = ({ iconName }) => {
+  const iconsPath = './wheather-icons/'
   return (
-    <div>
-      <h1 className={styles.locationName}>{name}</h1>
-      <h2 className={styles.locationCountry}>{country}</h2>
-
+    <div className={styles.div}>
+      <img className={styles.img} src={iconsPath + iconName + '.svg'}></img>
     </div>
   );
 };
 
-export interface LocationProps {
-  name: string;
-  country: string;
-  state: string
+export interface MainIconProps {
+  iconName: string | undefined;
 }
