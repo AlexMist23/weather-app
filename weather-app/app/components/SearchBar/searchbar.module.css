@@ -13,12 +13,10 @@
 .button {
   color: var(--color-ghostwhite);
   background-color: var(--color-berkeleyblue);
-  margin: auto;
 }
 
 .input {
   color: var(--color-berkeleyblue);
-  margin: auto;
   width: clamp(20%,80%,90%)
 }
 
