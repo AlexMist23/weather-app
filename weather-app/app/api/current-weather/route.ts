@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const body = await req.json();
   const { coord } = body;
+
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?` +
       new URLSearchParams({
