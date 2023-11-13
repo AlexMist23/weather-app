@@ -1,5 +1,5 @@
 /* Core */
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 /* Instruments */
 import { setCurrentWeatherAsync } from "./thunks";

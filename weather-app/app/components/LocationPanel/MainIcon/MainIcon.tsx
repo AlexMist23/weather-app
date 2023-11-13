@@ -10,7 +10,13 @@ export const MainIcon: React.FC<MainIconProps> = ({ iconName }) => {
   const iconsPath = "./wheather-icons/";
   return (
     <div className={styles.div}>
-      <img className={styles.img} src={iconsPath + iconName + ".svg"}></img>
+      <Image
+        className={styles.img}
+        src={iconsPath + iconName + ".svg"}
+        width={200}
+        height={200}
+        alt=""
+      />
     </div>
   );
 };

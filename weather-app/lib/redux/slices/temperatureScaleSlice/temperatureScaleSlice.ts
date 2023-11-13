@@ -10,10 +10,10 @@ export const temperatureScaleSlice = createSlice({
   initialState,
   reducers: {
     changeToCelcius: (state) => {
-      return state = {scale: 'Celcius'}
+      return (state = { scale: "Celcius" });
     },
     changeToFahrenheit: (state) => {
-      return state = {scale: 'Fahrenheit'}
+      return (state = { scale: "Fahrenheit" });
     },
   },
 });

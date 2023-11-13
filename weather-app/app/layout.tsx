@@ -11,11 +11,6 @@ import "./styles/globals.css";
 
 import { Analytics } from "@vercel/analytics/react";
 
-export const showAPI = () => {
-  console.log(process.env.API_KEY)
-}
-
-
 export default function RootLayout(props: React.PropsWithChildren) {
   return (
     <Providers>

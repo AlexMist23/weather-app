@@ -1,4 +1,5 @@
 /* Instruments */
-import type { ReduxState } from '@/lib/redux'
+import type { ReduxState } from "@/lib/redux";
 
-export const selectTemperatureScale = (state: ReduxState) => state.temperatureScale.scale
+export const selectTemperatureScale = (state: ReduxState) =>
+  state.temperatureScale.scale;

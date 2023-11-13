@@ -13,12 +13,13 @@
   text-align: center;
 }
 
-.link:hover, .link.active {
+.link:hover,
+.link.active {
   text-decoration: underline;
   background-color: rgb(216, 216, 216);
 }
 
-
-.link:nth-child(1):hover, .link:nth-child(1).active {
+.link:nth-child(1):hover,
+.link:nth-child(1).active {
   border-radius: 1.5em 0 0 1.5em;
 }

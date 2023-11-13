@@ -17,7 +17,7 @@
 
 .input {
   color: var(--color-berkeleyblue);
-  width: clamp(20%,80%,90%)
+  width: clamp(20%, 80%, 90%);
 }
 
 .ulContainer {

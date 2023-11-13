@@ -9,7 +9,6 @@ export const fetchLocationList = async (
     lon: number;
   }>;
 }> => {
-  console.log("s");
   const response = await fetch("/api/location-list", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

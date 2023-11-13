@@ -1,2 +1,2 @@
-export * from './temperatureScaleSlice'
-export * from './selectors'
+export * from "./temperatureScaleSlice";
+export * from "./selectors";
