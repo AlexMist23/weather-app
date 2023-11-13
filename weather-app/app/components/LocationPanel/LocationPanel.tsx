@@ -42,7 +42,7 @@ export const LocationPanel = () => {
         country={location.country}
         state={location.state}
       />
-      <MainIcon iconName={currentWeather?.weather[0].icon}/>
+      <MainIcon iconName={currentWeather?.weather[0].icon} />
       <CurrentWeather
         currentWheather={currentWeather}
         temperatureScale={temperatureScale}
