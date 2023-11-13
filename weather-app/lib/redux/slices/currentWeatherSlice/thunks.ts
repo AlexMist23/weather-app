@@ -6,6 +6,6 @@ export const setCurrentWeatherAsync = createAppAsyncThunk(
   "currentWeather/fetchCurrentWeather",
   async (coord: { lat: number; lon: number }) => {
     const response = await fetchCurrentWeather(coord);
-    return response;
+    return response.data;
   }
 );
