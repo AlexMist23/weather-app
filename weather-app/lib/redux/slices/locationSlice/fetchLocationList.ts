@@ -1,7 +1,5 @@
-import { APIKey } from "./APIKey";
-
 export const fetchLocationList = async (
-  city: string = ""
+  city: string
 ): Promise<
   Array<{
     name: String;
@@ -11,9 +9,14 @@ export const fetchLocationList = async (
     lon: number;
   }>
 > => {
-  const response = await fetch(
-    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIKey}`
-  );
+  console.log('s');
+  const response = await fetch("/api/location-list", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ city }),
+  });
+
   let result = await response.json();
-  return result;
+  
+  return result.data;
 };
