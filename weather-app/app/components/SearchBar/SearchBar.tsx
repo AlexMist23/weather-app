@@ -21,12 +21,10 @@ export const SearchBar = () => {
     dispatch(setLocationListAsync(cityInput));
   };
   const handleInputBlur = () => {
-    // Close the list when input loses focus.
     LocationListResetHandler();
   };
   const handleLiClick = (location: location) => {
     dispatch(locationSlice.actions.setLocation(location));
-    // Close the list when an option is selected.
     LocationListResetHandler();
     setCityInput("");
   };
@@ -58,8 +56,12 @@ export const SearchBar = () => {
       </div>
       <div className={styles.ulContainer}>
         <ul className={styles.ul}>
-          {locationList?.list.map((location: location) => (
-            <li className={styles.li} onClick={() => handleLiClick(location)}>
+          {locationList?.list.map((location: location, index: number) => (
+            <li
+              className={styles.li}
+              key={index}
+              onClick={() => handleLiClick(location)}
+            >
               {location.name}, {location.state}, {location.country}
             </li>
           ))}
