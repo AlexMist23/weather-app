@@ -7,9 +7,10 @@ import { useEffect } from "react";
 import {
   useSelector,
   useDispatch,
+  selectTemperatureScale,
   selectLocation,
   selectCurrentWeatherData,
-  selectTemperatureScale,
+  selectCurrentWeatherStatus,
   setCurrentWeatherAsync,
 } from "@/lib/redux";
 
@@ -26,7 +27,7 @@ export const LocationPanel = () => {
   const location = useSelector(selectLocation);
   const currentWeather = useSelector(selectCurrentWeatherData);
   const temperatureScale = useSelector(selectTemperatureScale);
-
+  const currentWeatherisLoading = useSelector(selectCurrentWeatherStatus);
   const currentWheatherUpdate = () => {
     dispatch(setCurrentWeatherAsync({ lat: location.lat, lon: location.lon }));
   };
@@ -42,10 +43,14 @@ export const LocationPanel = () => {
         country={location.country}
         state={location.state}
       />
-      <MainIcon iconName={currentWeather?.weather[0].icon} />
+      <MainIcon
+        iconName={currentWeather?.weather[0].icon}
+        isLoading={currentWeatherisLoading}
+      />
       <CurrentWeather
         currentWheather={currentWeather}
         temperatureScale={temperatureScale}
+        isLoading={currentWeatherisLoading}
       />
     </div>
   );

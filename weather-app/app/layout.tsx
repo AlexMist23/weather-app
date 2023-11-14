@@ -9,8 +9,6 @@ import { LocationPanel } from "./components/LocationPanel/LocationPanel";
 import styles from "./styles/layout.module.css";
 import "./styles/globals.css";
 
-import { Analytics } from "@vercel/analytics/react";
-
 export default function RootLayout(props: React.PropsWithChildren) {
   return (
     <Providers>
@@ -24,7 +22,6 @@ export default function RootLayout(props: React.PropsWithChildren) {
             <Nav />
             <main className={styles.main}>{props.children}</main>
           </section>
-          <Analytics />
         </body>
       </html>
     </Providers>
