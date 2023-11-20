@@ -4,7 +4,7 @@
 import styles from "./mainicon.module.css";
 
 export const MainIcon: React.FC<MainIconProps> = ({ iconName, isLoading }) => {
-  const iconsPath = "./wheather-icons/";
+  const iconsPath = "./static/images/";
   return (
     <div className={styles.div}>
       {isLoading ? (
@@ -21,6 +21,6 @@ export const MainIcon: React.FC<MainIconProps> = ({ iconName, isLoading }) => {
 };
 
 export interface MainIconProps {
-  iconName: string | undefined;
+  iconName: string | null;
   isLoading: boolean;
 }
