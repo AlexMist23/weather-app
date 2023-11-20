@@ -12,16 +12,28 @@ import {
 import styles from "./searchbar.module.css";
 
 export const SearchBar = () => {
+  const [isFocused, setIsFocused] = useState(false);
+
   const dispatch = useDispatch();
 
   const [cityInput, setCityInput] = useState("");
   const locationList = useSelector(selectLocationList);
 
+  const handleInputFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleInputBlur = () => {
+    if (!isFocused) {
+      LocationListResetHandler();
+    }
+  };
+
+  const handleListBlur = () => {
+    setIsFocused(false);
+  };
   const SearchHandler = () => {
     dispatch(setLocationListAsync(cityInput));
-  };
-  const handleInputBlur = () => {
-    LocationListResetHandler();
   };
   const handleLiClick = (location: location) => {
     dispatch(locationSlice.actions.setLocation(location));

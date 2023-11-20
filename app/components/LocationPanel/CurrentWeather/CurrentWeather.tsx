@@ -1,4 +1,5 @@
 "use client";
+
 /* Instruments */
 import { type currentWeather } from "@/lib/redux";
 import { convertTemp } from "@/lib/tempConvert";
@@ -12,21 +13,14 @@ export const CurrentWeather: React.FC<CurrentWeatherComponentProps> = ({
   const { temp, feels_like, temp_min, temp_max, pressure, humidity } = {
     ...currentWheather?.main,
   };
-
   return (
     <div className={styles.container}>
-      {isLoading ? (
-        <div className={styles.loader}/>
-      ) : (
-        <>
-          <p>temp: {convertTemp(temp, temperatureScale)}</p>
-          <p>feels_like: {convertTemp(feels_like, temperatureScale)}</p>
-          <p>temp_min: {convertTemp(temp_min, temperatureScale)}</p>
-          <p>temp_max: {convertTemp(temp_max, temperatureScale)}</p>
-          <p>pressure: {pressure}</p>
-          <p>humidity: {humidity}</p>
-        </>
-      )}
+      <p className={isLoading? styles.loader : ''}> temp: {convertTemp(temp, temperatureScale)}</p>
+      <p className={isLoading? styles.loader : ''}> feels_like: {convertTemp(feels_like, temperatureScale)}</p>
+      <p className={isLoading? styles.loader : ''}> temp_min: {convertTemp(temp_min, temperatureScale)}</p>
+      <p className={isLoading? styles.loader : ''}> temp_max: {convertTemp(temp_max, temperatureScale)}</p>
+      <p className={isLoading? styles.loader : ''}> pressure: {pressure}</p>
+      <p className={isLoading? styles.loader : ''}> humidity: {humidity}</p>
     </div>
   );
 };
