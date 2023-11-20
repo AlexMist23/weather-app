@@ -21,6 +21,6 @@ export const MainIcon: React.FC<MainIconProps> = ({ iconName, isLoading }) => {
 };
 
 export interface MainIconProps {
-  iconName: string | null;
+  iconName: string | undefined;
   isLoading: boolean;
 }

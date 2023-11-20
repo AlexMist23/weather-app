@@ -1,10 +1,27 @@
 :root {
-  --color-berkeleyblue-8: #061423;
-  --color-berkeleyblue: #12355b;
-  --color-ghostwhite: #f0eff4;
-  --color-air-orangepeel: #ff9f1c;
-  --color-picton-blue: #00a6fb;
-  --color-battleship-gray: #74776b;
+  /* Palette */
+  --berkeleyblue: #12355b;
+  --air-orangepeel: #ff9f1c;
+  --picton-blue: #00a6fb;
+  --battleship-gray: #74776b;
+
+  --black: #000;
+  --white: #fff;
+  --gray: #f6f5f1;
+  --gray-dark: #d6d5d2;
+  --green: #20ae44;
+  --red: #ff6124;
+  --yellow: #fae361;
+
+  /* App Theme */
+  --primary: var(--berkeleyblue);
+  --secondary: var(--air-orangepeel);
+  --main-bg-color: var(--gray)
+
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
 }
 
 body {
@@ -23,7 +40,7 @@ body {
   margin: 0;
   font-family: system-ui, sans-serif;
   display: flex;
-  background-color: var(--color-ghostwhite);
+  background-color: var(--main-bg-color);
 }
 
 .h1 {
