@@ -4,5 +4,5 @@ export default function IndexPage() {
 }
 
 export const metadata = {
-  title: "Wheather App",
+  title: "Weather App",
 };
