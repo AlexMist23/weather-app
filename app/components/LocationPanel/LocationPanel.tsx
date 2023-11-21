@@ -46,6 +46,7 @@ export const LocationPanel = () => {
       <MainIcon
         iconName={currentWeather?.weather[0].icon}
         isLoading={currentWeatherisLoading}
+        temp ={currentWeather?.main.temp}
       />
       <CurrentWeather
         currentWheather={currentWeather}

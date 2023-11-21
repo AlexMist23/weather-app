@@ -3,7 +3,11 @@
 /* Instruments */
 import styles from "./mainicon.module.css";
 
-export const MainIcon: React.FC<MainIconProps> = ({ iconName, isLoading }) => {
+export const MainIcon: React.FC<MainIconProps> = ({
+  iconName,
+  isLoading,
+  temp,
+}) => {
   const iconsPath = "./static/images/";
   return (
     <div className={styles.div}>
@@ -16,6 +20,7 @@ export const MainIcon: React.FC<MainIconProps> = ({ iconName, isLoading }) => {
           alt=""
         />
       )}
+      {temp && <p>{temp}</p>}
     </div>
   );
 };
@@ -23,4 +28,5 @@ export const MainIcon: React.FC<MainIconProps> = ({ iconName, isLoading }) => {
 export interface MainIconProps {
   iconName: string | undefined;
   isLoading: boolean;
+  temp: number | undefined;
 }

@@ -12,13 +12,13 @@
 }
 
 .button {
-  color: var(--color-ghostwhite);
-  background-color: var(--color-berkeleyblue);
+  color: var(--white);
+  background-color: var(--primary);
 }
 
 .input {
-  color: var(--color-berkeleyblue);
   width: 100%;
+  font-size: 100%;
 }
 
 .ulContainer {
@@ -26,6 +26,7 @@
 }
 
 .ul {
+  background-color: var(--white);
   padding: 0;
   list-style: none;
   margin: 0;
@@ -34,7 +35,6 @@
 }
 .li {
   padding: 0.2em 1em;
-  border: 0.01em rgb(45, 45, 45) solid;
 }
 .li:hover {
   background-color: rgb(40, 40, 40);

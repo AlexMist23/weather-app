@@ -1,32 +1,39 @@
 "use client";
 
 /* Instruments */
-import { type currentWeather } from "@/lib/redux";
-import { convertTemp } from "@/lib/tempConvert";
+import {
+  useSelector,
+  selectCurrentWeatherData,
+  selectCurrentWeatherStatus,
+} from "@/lib/redux";
+
+import { tempConvert } from "@/lib/tempConvert";
 import styles from "./currentweather.module.css";
 
-export const CurrentWeather: React.FC<CurrentWeatherComponentProps> = ({
-  temperatureScale,
-  currentWheather,
-  isLoading,
-}) => {
+export const CurrentWeather = () => {
+  const isLoading = useSelector(selectCurrentWeatherStatus);
+  const currentWeather = useSelector(selectCurrentWeatherData);
+
   const { temp, feels_like, temp_min, temp_max, pressure, humidity } = {
-    ...currentWheather?.main,
+    ...currentWeather?.main,
   };
+
   return (
     <div className={styles.container}>
-      <p className={isLoading? styles.loader : ''}> temp: {convertTemp(temp, temperatureScale)}</p>
-      <p className={isLoading? styles.loader : ''}> feels_like: {convertTemp(feels_like, temperatureScale)}</p>
-      <p className={isLoading? styles.loader : ''}> temp_min: {convertTemp(temp_min, temperatureScale)}</p>
-      <p className={isLoading? styles.loader : ''}> temp_max: {convertTemp(temp_max, temperatureScale)}</p>
-      <p className={isLoading? styles.loader : ''}> pressure: {pressure}</p>
-      <p className={isLoading? styles.loader : ''}> humidity: {humidity}</p>
+      <p className={isLoading ? styles.loader : ""}>
+        temp: {tempConvert(temp)}
+      </p>
+      <p className={isLoading ? styles.loader : ""}>
+        feels_like: {tempConvert(feels_like)}
+      </p>
+      <p className={isLoading ? styles.loader : ""}>
+        temp_min: {tempConvert(temp_min)}
+      </p>
+      <p className={isLoading ? styles.loader : ""}>
+        temp_max: {tempConvert(temp_max)}
+      </p>
+      <p className={isLoading ? styles.loader : ""}> pressure: {pressure}</p>
+      <p className={isLoading ? styles.loader : ""}> humidity: {humidity}</p>
     </div>
   );
 };
-
-export interface CurrentWeatherComponentProps {
-  currentWheather: currentWeather | null;
-  temperatureScale: string;
-  isLoading: boolean;
-}

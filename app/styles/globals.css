@@ -1,22 +1,22 @@
 :root {
   /* Palette */
-  --berkeleyblue: #12355b;
-  --air-orangepeel: #ff9f1c;
+  --berkeley-blue: #12355b;
+  --orange-peel: #ff9f1c;
   --picton-blue: #00a6fb;
   --battleship-gray: #74776b;
 
   --black: #000;
   --white: #fff;
-  --gray: #f6f5f1;
-  --gray-dark: #d6d5d2;
+  --gray: #ebebeb;
+  --gray-dark: #e8e8e8;
   --green: #20ae44;
   --red: #ff6124;
   --yellow: #fae361;
 
   /* App Theme */
-  --primary: var(--berkeleyblue);
-  --secondary: var(--air-orangepeel);
-  --main-bg-color: var(--gray)
+  --primary: var(--berkeley-blue);
+  --secondary: var(--orange-peel);
+  --main-bg-color: var(--gray);
 
   --success: #28a745;
   --info: #17a2b8;
@@ -57,8 +57,7 @@ a {
 }
 
 input {
-  border-radius: 0;
-  border: 0;
+  color: var(--black);
 }
 
 input:focus {
@@ -66,6 +65,7 @@ input:focus {
 }
 
 button {
+  background-color: var(--primary);
   border: 0;
 }
 

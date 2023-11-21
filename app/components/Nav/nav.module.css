@@ -1,15 +1,12 @@
 .nav {
-  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: white;
-  border-radius: 1.5em;
 }
 
 .link {
   display: block;
-  padding: clamp(8em 0, 12em, 15em);
   text-align: center;
 }
 
