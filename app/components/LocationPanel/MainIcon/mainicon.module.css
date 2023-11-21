@@ -1,19 +1,30 @@
 .div {
   display: flex;
-  width: 70%;
-  aspect-ratio: 1/1;
-  
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.img{
+  height: 6em;
 }
 
 .loader {
+  opacity: 75%;
   border: 0.5em solid rgb(252, 244, 244);
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
   border-radius: 50%;
   aspect-ratio: 1/1;
-  margin: 20%;
   -webkit-animation: spin 2s cubic-bezier(0, 1.5, 1, 1.5) infinite; /* Parabolic curve */
   animation: spin 1s cubic-bezier(0.7, 0.5, 0.3, 0.5) infinite; /* Parabolic curve */
+}
+
+.p {
+  text-align: center;
+  display: block;
+  font-size: 300%;
+  margin-left: 0.5em;
 }
 
 @-webkit-keyframes spin {

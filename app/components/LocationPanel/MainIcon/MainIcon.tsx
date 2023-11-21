@@ -1,32 +1,37 @@
 "use client";
+import {
+  selectCurrentWeatherData,
+  selectCurrentWeatherStatus,
+  selectTemperatureScale,
+  useSelector,
+} from "@/lib/redux";
 
+import { tempConvert } from "@/lib/tempConvert";
 /* Instruments */
 import styles from "./mainicon.module.css";
 
-export const MainIcon: React.FC<MainIconProps> = ({
-  iconName,
-  isLoading,
-  temp,
-}) => {
+export const MainIcon = () => {
+  const scale = useSelector(selectTemperatureScale);
+  const isLoading = useSelector(selectCurrentWeatherStatus);
+  const currentWeather = useSelector(selectCurrentWeatherData);
+  const iconName = currentWeather?.weather[0].icon;
+  const temp = currentWeather?.main.temp;
+
   const iconsPath = "./static/images/";
   return (
     <div className={styles.div}>
-      {isLoading ? (
+      {isLoading && !temp ? (
         <div className={styles.loader} />
       ) : (
-        <img
-          className={styles.img}
-          src={iconsPath + iconName + ".svg"}
-          alt=""
-        />
+        <>
+          <img
+            className={styles.img}
+            src={iconsPath + iconName + ".svg"}
+            alt=""
+          />
+          <p className={styles.p}>{tempConvert(temp, scale)}</p>
+        </>
       )}
-      {temp && <p>{temp}</p>}
     </div>
   );
 };
-
-export interface MainIconProps {
-  iconName: string | undefined;
-  isLoading: boolean;
-  temp: number | undefined;
-}

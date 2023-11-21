@@ -1,8 +1,6 @@
-import { useSelector, selectTemperatureScale } from "@/lib/redux";
-
 export const tempConvert = (
   temp: number | undefined,
-  scale: string = useSelector(selectTemperatureScale)
+  scale: string
 ) => {
   if (!temp) return
   if (scale == "Celcius") return `${(temp - 273.15).toFixed(0)}°C`;
