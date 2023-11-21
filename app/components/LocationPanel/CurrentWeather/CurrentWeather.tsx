@@ -33,7 +33,6 @@ export const CurrentWeather = () => {
         temp_max: {tempConvert(temp_max)}
       </p>
       <p className={isLoading ? styles.loader : ""}> pressure: {pressure}</p>
-      <p className={isLoading ? styles.loader : ""}> humidity: {humidity}</p>
-    </div>
+      <p className={isLoading ? styles.loader : ""}> humidity: {humidity}</p>    </div>
   );
 };

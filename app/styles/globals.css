@@ -8,7 +8,7 @@
   --black: #000;
   --white: #fff;
   --gray: #ebebeb;
-  --gray-dark: #e8e8e8;
+  --gray-dark: #8f8f8f;
   --green: #20ae44;
   --red: #ff6124;
   --yellow: #fae361;
@@ -41,14 +41,6 @@ body {
   font-family: system-ui, sans-serif;
   display: flex;
   background-color: var(--main-bg-color);
-}
-
-.h1 {
-  margin: 0;
-}
-
-.h2 {
-  margin: 0;
 }
 
 a {

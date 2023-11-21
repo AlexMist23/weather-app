@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: center;
   background-color: white;
+  width: 30em;
+  height: 2em;
 }
 
 .link {
@@ -13,7 +15,7 @@
 .link:hover,
 .link.active {
   text-decoration: underline;
-  background-color: rgb(216, 216, 216);
+  background-color: var(--gray );
 }
 
 .link:nth-child(1):hover,
