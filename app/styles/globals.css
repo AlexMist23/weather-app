@@ -1,6 +1,7 @@
 :root {
   /* Palette */
   --berkeley-blue: #12355b;
+  --berkeley-blue-light: #b8c2ce;
   --orange-peel: #ff9f1c;
   --picton-blue: #00a6fb;
   --battleship-gray: #74776b;
@@ -9,9 +10,6 @@
   --white: #fff;
   --gray: #ebebeb;
   --gray-dark: #8f8f8f;
-  --green: #20ae44;
-  --red: #ff6124;
-  --yellow: #fae361;
 
   /* App Theme */
   --primary: var(--berkeley-blue);
@@ -50,6 +48,8 @@ a {
 
 input {
   color: var(--black);
+  padding: 0 1.5%;
+  border: 0;
 }
 
 input:focus {
@@ -64,8 +64,10 @@ button {
 h1,
 h2,
 h3,
+ul,
 p {
   margin: 0;
+  padding: 0;
 }
 
 * {

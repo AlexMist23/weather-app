@@ -5,6 +5,7 @@
   width: calc(15vw + 20em);
   color: var(--white);
   background-color: var(--berkeley-blue);
+  padding: 1em;
 }
 
 .rightPanel {
