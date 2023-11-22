@@ -72,7 +72,7 @@ export const locationSlice = createSlice({
 /* Types */
 export interface locationSliceState {
   locationList: {
-    list: Array<location> | any;
+    list: Array<location> | Array<any>;
     isLoading: boolean;
   };
   location: location;

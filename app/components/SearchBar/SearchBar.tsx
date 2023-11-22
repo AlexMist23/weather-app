@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import {
   setLocationListAsync,
   locationSlice,
@@ -8,65 +8,106 @@ import {
   useSelector,
   selectLocationList,
   type location,
-  selectLocationListIsLoading,
 } from "@/lib/redux";
 import styles from "./searchbar.module.css";
 
 export const SearchBar = () => {
   const dispatch = useDispatch();
-  const [isFocused, setIsFocused] = useState(false);
+  const searchBarRef = useRef<HTMLDivElement | null>(null);
+  const ulRef = useRef<HTMLUListElement | null>(null);
+
   const [cityInput, setCityInput] = useState("");
-  const locationList = useSelector(selectLocationList);
-  const locationListIsLoading = useSelector(selectLocationListIsLoading);
+  const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
 
-  const handleInputFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
+  const { list: locationList } = useSelector(selectLocationList);
 
-  const handleListBlur = useCallback(() => {
-    setIsFocused(false);
-  }, []);
-
-  const handleInputBlur = useCallback(() => {
-    if (!isFocused && locationList) {
+  const clearLocationList = useCallback(() => {
+    if (locationList) {
       dispatch(locationSlice.actions.clearLocationList());
+      setSelectedPosition(null)
     }
-  }, [dispatch, isFocused, locationList]);
+  }, [dispatch, locationList]);
 
-  const SearchHandler = useCallback(() => {
+  const searchHandler = useCallback(() => {
     dispatch(setLocationListAsync(cityInput));
   }, [dispatch, cityInput]);
 
   const handleLiClick = useCallback(
     (location: location) => {
       dispatch(locationSlice.actions.setLocation(location));
-      if (locationList) {
-        dispatch(locationSlice.actions.clearLocationList());
-      }
+      clearLocationList();
       setCityInput("");
     },
-    [dispatch, locationList]
+    [dispatch, clearLocationList]
   );
 
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLUListElement>) => {
+      if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+        e.preventDefault();
+        setSelectedPosition((prev) => {
+          if (prev === null) return 0;
+          if (e.key === "ArrowUp") return Math.max(prev - 1, 0);
+          return Math.min(prev + 1, locationList.length - 1);
+        });
+      } else if (e.key === "Enter" && selectedPosition !== null) {
+        handleLiClick(locationList[selectedPosition]);
+      }
+    },
+    [locationList, selectedPosition, handleLiClick]
+  );
+
+  const handleClick = useCallback(
+    (event: MouseEvent) => {
+      if (
+        searchBarRef.current &&
+        !searchBarRef.current.contains(event.target as Node)
+      ) {
+        clearLocationList();
+      }
+    },
+    [clearLocationList]
+  );
+
+  const handleKeyPress = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        dispatch(setLocationListAsync(cityInput)).then((action) => {
+          if (setLocationListAsync.fulfilled.match(action)) {
+            if (ulRef.current) {
+              ulRef.current.focus();
+              setSelectedPosition(0);
+            }
+          }
+        });
+      }
+    },
+    [dispatch, cityInput]
+  );
+
+  useEffect(() => {
+    window.addEventListener("mousedown", handleClick);
+    return () => {
+      window.removeEventListener("mousedown", handleClick);
+    };
+  }, [handleClick]);
+
   return (
-    <div className={styles.searchBar}>
+    <div className={styles.searchBar} ref={searchBarRef}>
       <div className={styles.inputContainer}>
         <input
-          onKeyDown={(e) => {
-            if (e.key === "Enter") SearchHandler();
-          }}
           className={styles.input}
           type="text"
           placeholder="Search city"
           name="cityInput"
           value={cityInput}
+          onKeyDown={handleKeyPress}
           onChange={(e) => {
             setCityInput(e.target.value);
           }}
-          onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
         />
-        <button className={styles.button} onClick={SearchHandler}>
+        <button className={styles.button} onClick={searchHandler}>
           <Image
             src={"./static/images/search-icon.svg"}
             height={100}
@@ -75,13 +116,19 @@ export const SearchBar = () => {
           />
         </button>
       </div>
-      <div className={styles.ulContainer} onBlur={handleListBlur}>
-        {locationListIsLoading && <div className={styles.loader} />}
-        {locationList?.list.length > 0 && (
-          <ul className={styles.ul}>
-            {locationList?.list.map((location: location, index: number) => (
+      <div className={styles.ulContainer}>
+        {locationList?.length > 0 && (
+          <ul
+            className={styles.ul}
+            onKeyDown={handleKeyDown}
+            tabIndex={-1}
+            ref={ulRef}
+          >
+            {locationList?.map((location: location, index: number) => (
               <li
-                className={styles.li}
+                className={`${styles.li} ${
+                  index === selectedPosition ? styles.selected : ""
+                }`}
                 key={index}
                 onClick={() => handleLiClick(location)}
               >
