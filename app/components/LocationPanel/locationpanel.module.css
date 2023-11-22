@@ -3,5 +3,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1%;
+}
+
+.loader {
+  height: 6em;
+  opacity: 75%;
+  border: 0.5em solid rgb(252, 244, 244);
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  -webkit-animation: spin 2s cubic-bezier(0, 1.5, 1, 1.5) infinite; /* Parabolic curve */
+  animation: spin 1s cubic-bezier(0.7, 0.5, 0.3, 0.5) infinite; /* Parabolic curve */
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

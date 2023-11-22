@@ -32,12 +32,12 @@ body.dark-theme {
 
 html,
 body {
+  display: flex;
   min-height: 100vh;
   min-width: 100vw;
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;
-  display: flex;
   background-color: var(--main-bg-color);
 }
 

@@ -15,6 +15,7 @@ export default function RootLayout(props: React.PropsWithChildren) {
       <html lang="en">
         <body>
           <section className={styles.leftPanel}>
+            <SearchBar />
             <LocationPanel />
           </section>
           <section className={styles.rightPanel}>

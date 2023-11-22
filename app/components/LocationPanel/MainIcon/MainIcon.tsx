@@ -6,6 +6,7 @@ import {
   useSelector,
 } from "@/lib/redux";
 
+import Image from "next/image";
 import { tempConvert } from "@/lib/tempConvert";
 /* Instruments */
 import styles from "./mainicon.module.css";
@@ -24,10 +25,11 @@ export const MainIcon = () => {
         <div className={styles.loader} />
       ) : (
         <>
-          <img
-            className={styles.img}
-            src={iconsPath + iconName + ".svg"}
-            alt=""
+          <Image
+          src={iconsPath + iconName + ".svg"}
+          height={200}
+          width={200}
+          alt="current weather icon"
           />
           <p className={styles.p}>{tempConvert(temp, scale)}</p>
         </>

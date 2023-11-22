@@ -2,52 +2,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  text-align: center;
+  gap: 1em;
   padding: 1em;
-}
 
-.loader {
-  background: linear-gradient(
-    -45deg,
-    var(--gray) 40%,
-    rgb(255, 255, 255) 50%,
-    var(--gray) 60%
-  );
-  background-size: 200% 100%;
-  border-radius: 1em;
-  color: #00000000;
-  animation: gradient 1s linear infinite;
-  fill-opacity: 10%;
-  opacity: 75%;
-}
-
-.description {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0em 0.5em;
   text-align: center;
 }
-.description p {
-  text-wrap: nowrap;
-}
 
-.p{
-  width: fit-content;
+.span::first-letter {
+  text-transform: capitalize;
 }
 
 .p::first-letter {
   text-transform: capitalize;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 0%;
-  }
-
-  100% {
-    background-position: -200% 0%;
-  }
 }

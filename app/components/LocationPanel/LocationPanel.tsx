@@ -9,6 +9,7 @@ import {
   useDispatch,
   selectLocation,
   setCurrentWeatherAsync,
+  selectCurrentWeatherStatus,
 } from "@/lib/redux";
 
 import styles from "./locationpanel.module.css";
@@ -18,12 +19,12 @@ import { CurrentWeather } from "./CurrentWeather/CurrentWeather";
 import { LocationName } from "./LocationName/LocationName";
 import { MainIcon } from "./MainIcon/MainIcon";
 import { LocalDate } from "./LocalDate/LocalDate";
-import { SearchBar } from "../SearchBar/SearchBar";
 
 export const LocationPanel = () => {
   const dispatch = useDispatch();
 
   const location = useSelector(selectLocation);
+  const locationListIsLoading = useSelector(selectCurrentWeatherStatus);
 
   const currentWheatherUpdate = () => {
     dispatch(setCurrentWeatherAsync({ lat: location.lat, lon: location.lon }));
@@ -35,11 +36,17 @@ export const LocationPanel = () => {
 
   return (
     <div className={styles.LocationPanel}>
-      <SearchBar />
       <LocalDate />
       <LocationName />
-      <MainIcon />
-      <CurrentWeather />
+      {locationListIsLoading ? (
+        <div className={styles.loader}></div>
+      ) : (
+        <>
+        <MainIcon />
+        <CurrentWeather />
+        </>
+      )}
+      
     </div>
   );
 };
