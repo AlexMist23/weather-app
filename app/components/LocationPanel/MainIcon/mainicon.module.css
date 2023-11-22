@@ -10,6 +10,7 @@
 }
 
 .loader {
+  margin: 10em 2em;
   height: 6em;
   opacity: 75%;
   border: 0.5em solid rgb(252, 244, 244);

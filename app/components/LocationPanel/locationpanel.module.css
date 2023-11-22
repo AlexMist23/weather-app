@@ -3,11 +3,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1em;
 }
 
 .loader {
-  --line-width: 1em;
-  width: 100%;
+  margin-top: 5vh;
+  --line-width: 0.5em;
+  width: 80%;
   border: var(--line-width) solid rgb(252, 244, 244);
   border-top: var(--line-width) solid transparent;
   border-bottom: var(--line-width) solid transparent;
