@@ -24,7 +24,7 @@ export const SearchBar = () => {
   const clearLocationList = useCallback(() => {
     if (locationList) {
       dispatch(locationSlice.actions.clearLocationList());
-      setSelectedPosition(null)
+      setSelectedPosition(null);
     }
   }, [dispatch, locationList]);
 

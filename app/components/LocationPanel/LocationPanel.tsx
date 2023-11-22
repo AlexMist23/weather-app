@@ -36,12 +36,12 @@ export const LocationPanel = () => {
 
   return (
     <div className={styles.LocationPanel}>
-      <LocalDate />
       <LocationName />
       {locationListIsLoading ? (
         <div className={styles.loader}></div>
       ) : (
         <>
+        <LocalDate />
         <MainIcon />
         <CurrentWeather />
         </>
