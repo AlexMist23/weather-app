@@ -6,7 +6,7 @@
   color: var(--white);
   background-color: var(--berkeley-blue);
   padding: 1em;
-  gap: 1em;
+  gap: 2em;
 }
 
 .rightPanel {
