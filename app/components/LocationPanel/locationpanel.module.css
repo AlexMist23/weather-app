@@ -6,11 +6,11 @@
 }
 
 .loader {
-  height: 6em;
-  opacity: 75%;
-  border: 0.5em solid rgb(252, 244, 244);
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  --line-width: 1em;
+  width: 100%;
+  border: var(--line-width) solid rgb(252, 244, 244);
+  border-top: var(--line-width) solid transparent;
+  border-bottom: var(--line-width) solid transparent;
   border-radius: 50%;
   aspect-ratio: 1/1;
   -webkit-animation: spin 2s cubic-bezier(0, 1.5, 1, 1.5) infinite; /* Parabolic curve */
