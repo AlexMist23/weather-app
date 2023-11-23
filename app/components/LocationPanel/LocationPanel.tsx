@@ -7,9 +7,13 @@ import { useEffect } from "react";
 import {
   useSelector,
   useDispatch,
+  locationSlice,
   selectLocation,
   setCurrentWeatherAsync,
   selectCurrentWeatherStatus,
+  selectLocationList,
+  locationListSlice,
+  setLocationByCoordAsync,
 } from "@/lib/redux";
 
 import styles from "./locationpanel.module.css";
@@ -22,17 +26,16 @@ import { LocalDate } from "./LocalDate/LocalDate";
 
 export const LocationPanel = () => {
   const dispatch = useDispatch();
-
-  const location = useSelector(selectLocation);
+  const locationList = useSelector(selectLocationList);
   const locationListIsLoading = useSelector(selectCurrentWeatherStatus);
 
-  const currentWheatherUpdate = () => {
-    dispatch(setCurrentWeatherAsync({ lat: location.lat, lon: location.lon }));
-  };
-
   useEffect(() => {
-    currentWheatherUpdate();
-  }, [location]);
+    navigator.geolocation.getCurrentPosition((position) => {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      dispatch(setLocationByCoordAsync({ lat, lon }));
+    });
+  }, []);
 
   return (
     <div className={styles.LocationPanel}>
@@ -41,12 +44,11 @@ export const LocationPanel = () => {
         <div className={styles.loader}></div>
       ) : (
         <>
-        <LocalDate />
-        <MainIcon />
-        <CurrentWeather />
+          <LocalDate />
+          <MainIcon />
+          <CurrentWeather />
         </>
       )}
-      
     </div>
   );
 };

@@ -14,9 +14,9 @@ export const Nav = () => {
     <nav className={styles.nav}>
       <Link
         className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
-        href="/"
+        href="/forecast"
       >
-        Current Weather
+        forecast
       </Link>
       <Link
         className={`${styles.link} ${

@@ -30,6 +30,7 @@ export const MainIcon = () => {
           height={200}
           width={200}
           alt="current weather icon"
+          loading="lazy"
           />
           <p className={styles.p}>{tempConvert(temp, scale)}</p>
         </>
