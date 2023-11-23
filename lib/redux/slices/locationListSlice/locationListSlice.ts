@@ -26,22 +26,20 @@ export const locationListSlice = createSlice({
 
       .addCase(setLocationListAsync.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.data = action.payload
+        state.data = action.payload;
       });
   },
 });
 
 /* Types */
 export interface locationListSliceState {
-  data: Array<location>;
+  data: Array<{
+    name: string;
+    country: string;
+    state: string;
+    lat: number;
+    lon: number;
+    local_names: any;
+  }>;
   isLoading: boolean;
-}
-
-export interface location {
-  name: string;
-  country: string;
-  state: string;
-  lat: number;
-  lon: number;
-  local_names: any;
 }
