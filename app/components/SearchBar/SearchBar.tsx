@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import {
   setLocationListAsync,
   locationSlice,
+  locationListSlice,
   useDispatch,
   useSelector,
   selectLocationList,
@@ -19,11 +20,12 @@ export const SearchBar = () => {
   const [cityInput, setCityInput] = useState("");
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
 
-  const { list: locationList } = useSelector(selectLocationList);
+  const { data: locationList, isLoading: isLoading } =
+    useSelector(selectLocationList);
 
   const clearLocationList = useCallback(() => {
-    if (locationList) {
-      dispatch(locationSlice.actions.clearLocationList());
+    if (locationList.length > 0) {
+      dispatch(locationListSlice.actions.clearData());
       setSelectedPosition(null);
     }
   }, [dispatch, locationList]);
@@ -117,25 +119,31 @@ export const SearchBar = () => {
         </button>
       </div>
       <div className={styles.ulContainer}>
-        {locationList?.length > 0 && (
-          <ul
-            className={styles.ul}
-            onKeyDown={handleKeyDown}
-            tabIndex={-1}
-            ref={ulRef}
-          >
-            {locationList?.map((location: location, index: number) => (
-              <li
-                className={`${styles.li} ${
-                  index === selectedPosition ? styles.selected : ""
-                }`}
-                key={index}
-                onClick={() => handleLiClick(location)}
+        {isLoading ? (
+          <div className={styles.loader} />
+        ) : (
+          <>
+            {locationList?.length > 0 && (
+              <ul
+                className={styles.ul}
+                onKeyDown={handleKeyDown}
+                tabIndex={-1}
+                ref={ulRef}
               >
-                {location.name}, {location.state}, {location.country}
-              </li>
-            ))}
-          </ul>
+                {locationList?.map((location: location, index: number) => (
+                  <li
+                    className={`${styles.li} ${
+                      index === selectedPosition ? styles.selected : ""
+                    }`}
+                    key={index}
+                    onClick={() => handleLiClick(location)}
+                  >
+                    {location.name}, {location.state}, {location.country}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
         )}
       </div>
     </div>

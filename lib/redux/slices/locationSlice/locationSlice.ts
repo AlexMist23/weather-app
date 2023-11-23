@@ -18,14 +18,7 @@ export const locationSlice = createSlice({
   initialState,
   reducers: {
     setLocation: (state, action: PayloadAction<locationSliceState>) => {
-      state = {
-        name: action.payload.name,
-        country: action.payload.country,
-        state: action.payload.state,
-        lat: action.payload.lat,
-        lon: action.payload.lon,
-        local_names: action.payload.local_names,
-      };
+      return (state = { ...action.payload });
     },
   },
 });
