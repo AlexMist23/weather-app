@@ -1,18 +1,21 @@
 "use client";
 
 /* Core */
-import { useSelector, selectLocation } from "@/lib/redux";
+import { type location } from "@/lib/redux";
 /* Instruments */
 import styles from "./locationname.module.css";
+import React from "react";
 
-export const LocationName = () => {
-  const { name, country, state } = useSelector(selectLocation);
+export const LocationName: React.FC<{ location: location }> = ({
+  location,
+}) => {
+  const { name, country, state } = location;
   return (
     <div className={styles.div}>
       <h1 className={styles.h1}>{name}</h1>
       <h2 className={styles.h2}>
-        {country && `${country}, `}
-        {state}
+        {country && country}
+        {state && `, ${state}`}
       </h2>
     </div>
   );

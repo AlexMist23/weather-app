@@ -5,14 +5,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { setLocationByCoordAsync } from "./thunks";
 
 const initialState: locationSliceState = {
-  data: {
-    name: "London",
-    country: "GB",
-    state: "England",
-    lat: 51.5073219,
-    lon: -0.1276474,
-    local_names: {},
-  },
+  data: null,
   isLoading: false
 };
 
@@ -20,9 +13,8 @@ export const locationSlice = createSlice({
   name: "location",
   initialState,
   reducers: {
-    setLocation: (state, action: PayloadAction<locationSliceState>) => {
-      console.log(action);
-      return (state = { ...action.payload });
+    setLocation: (state, action: PayloadAction<location>) => {
+      state.data = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -40,7 +32,7 @@ export const locationSlice = createSlice({
 
 /* Types */
 export interface locationSliceState {
-  data: location;
+  data: location | null;
   isLoading: boolean;
 }
 export interface location {

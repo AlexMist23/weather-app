@@ -52,6 +52,7 @@
 }
 
 .loader {
+  position: absolute;
   height: 2em;
   background: linear-gradient(
     -45deg,
