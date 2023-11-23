@@ -15,3 +15,15 @@
 .p::first-letter {
   text-transform: capitalize;
 }
+
+.container p {
+  display: flex;
+  flex-direction: row;
+  height: 2em;
+  line-height: 1.8em;
+}
+
+.container p img{
+  height: 100%;
+  margin-right: 0.5em;
+}
