@@ -9,20 +9,13 @@ import styles from "./nav.module.css";
 
 export const Nav = () => {
   const pathname = usePathname();
-
   return (
     <nav className={styles.nav}>
-      <Link
-        className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
-        href="/forecast"
-      >
-        forecast
-      </Link>
       <Link
         className={`${styles.link} ${
           pathname === "/today" ? styles.active : ""
         }`}
-        href="/today"
+        href={pathname + "/today"}
       >
         Today
       </Link>
@@ -30,7 +23,7 @@ export const Nav = () => {
         className={`${styles.link} ${
           pathname === "/5-day" ? styles.active : ""
         }`}
-        href="/5-day"
+        href={pathname + "/5-day"}
       >
         5 Day
       </Link>
@@ -38,7 +31,7 @@ export const Nav = () => {
         className={`${styles.link} ${
           pathname === "/Maps" ? styles.active : ""
         }`}
-        href="/Maps"
+        href={pathname + "/Maps"}
       >
         Maps
       </Link>
@@ -46,9 +39,9 @@ export const Nav = () => {
         className={`${styles.link} ${
           pathname === "/air-polution" ? styles.active : ""
         }`}
-        href="/air-polution"
+        href={pathname + "/air-polution"}
       >
-        Air Polution
+        Polution
       </Link>
     </nav>
   );
