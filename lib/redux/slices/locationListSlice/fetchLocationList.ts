@@ -2,11 +2,12 @@ export const fetchLocationList = async (
   city: string
 ): Promise<{
   data: Array<{
-    name: String;
-    country: String;
-    state: String;
+    name: string;
+    country: string;
+    state: string;
     lat: number;
     lon: number;
+    local_names: any;
   }>;
 }> => {
   const response = await fetch("/api/location-list", {
