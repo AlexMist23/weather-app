@@ -22,10 +22,11 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
   const { name: tempScale, symbol: scaleSymbol } = useSelector(
     selectTemperatureScale
   );
-
+  const { visibility } = currentWeather
   const { pressure, humidity, feels_like, temp } = currentWeather.main;
   const { speed: windSpeed, deg: windDeg } = currentWeather.wind;
   const { description } = currentWeather.weather[0];
+
 
   const feelsLike = tempConvert(feels_like, tempScale);
   const dewPointTemp = tempConvert(dewPointCalc(temp, humidity), tempScale);
@@ -64,6 +65,7 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
         Dew Point: {dewPointTemp}
         {scaleSymbol}
       </p>
+      <p>Visibility: {(visibility / 1000).toFixed(1)}km</p>
     </div>
   );
 };
