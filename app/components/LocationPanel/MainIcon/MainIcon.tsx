@@ -31,8 +31,8 @@ export const MainIcon: React.FC<{ weather: currentWeather }> = ({
         <>
           <Image
             src={iconsPath + iconName + ".svg"}
-            height={200}
-            width={200}
+            height={150}
+            width={150}
             alt={`${iconAlt} icon`}
             loading="lazy"
           />
