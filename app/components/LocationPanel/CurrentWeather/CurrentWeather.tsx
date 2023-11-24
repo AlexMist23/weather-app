@@ -14,6 +14,7 @@ import { tempConvert } from "@/lib/tempConvert";
 import styles from "./currentweather.module.css";
 import Image from "next/image";
 import { dewPointCalc } from "@/lib/dewPointCalc";
+import { windDegToString } from "@/lib/windDegToString";
 
 export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
   weather,
@@ -41,7 +42,16 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
 
       <p className={styles.p}>
         <Image
-          className={styles.pressureIcon}
+          style={{ transform: `rotate(${windDeg}deg)` }}
+          src={"/static/images/wind-arrow-icon.svg"}
+          height={20}
+          width={20}
+          alt="pressure-icon"
+        />{" "}
+        {windSpeed}m/s {windDegToString(windDeg)}
+      </p>
+      <p className={styles.p}>
+        <Image
           src={"/static/images/pressure-icon.svg"}
           height={20}
           width={20}
