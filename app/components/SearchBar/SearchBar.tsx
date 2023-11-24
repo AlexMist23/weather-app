@@ -7,8 +7,9 @@ import {
   locationListSlice,
   useDispatch,
   useSelector,
-  selectLocationList,
   type location,
+  selectLocationListisLoading,
+  selectLocationListData,
 } from "@/lib/redux";
 import styles from "./searchbar.module.css";
 
@@ -20,8 +21,8 @@ export const SearchBar = () => {
   const [cityInput, setCityInput] = useState("");
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
 
-  const { data: locationList, isLoading: isLoading } =
-    useSelector(selectLocationList);
+  const isLoading = useSelector(selectLocationListisLoading);
+  const locationList = useSelector(selectLocationListData);
 
   const clearLocationList = useCallback(() => {
     if (locationList.length > 0) {
