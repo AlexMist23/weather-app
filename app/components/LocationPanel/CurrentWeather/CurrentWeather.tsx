@@ -4,8 +4,8 @@
 
 import {
   useSelector,
-  selectCurrentWeatherData,
   selectTemperatureScale,
+  type currentWeather,
 } from "@/lib/redux";
 
 import { breezeCalc } from "@/lib/breezeCalc";
@@ -13,8 +13,10 @@ import { tempConvert } from "@/lib/tempConvert";
 import styles from "./currentweather.module.css";
 import Image from "next/image";
 
-export const CurrentWeather = () => {
-  const currentWeather = useSelector(selectCurrentWeatherData);
+export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
+  weather,
+}) => {
+  const currentWeather = weather;
   const scale = useSelector(selectTemperatureScale);
 
   const description = currentWeather?.weather[0]?.description;

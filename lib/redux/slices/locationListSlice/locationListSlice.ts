@@ -6,7 +6,7 @@ import { setLocationListAsync } from "./thunks";
 
 const initialState: locationListSliceState = {
   isLoading: false,
-  data: [],
+  data: null,
 };
 
 export const locationListSlice = createSlice({
@@ -15,7 +15,8 @@ export const locationListSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     clearData: (state) => {
-      state.data = [];
+      state.data = null;
+      state.isLoading = false;
     },
   },
   extraReducers: (builder) => {
@@ -27,19 +28,22 @@ export const locationListSlice = createSlice({
       .addCase(setLocationListAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.data = action.payload;
+        // return state = {...state, isLoading: false, data: action.payload}
       });
   },
 });
 
 /* Types */
 export interface locationListSliceState {
-  data: Array<{
-    name: string;
-    country: string;
-    state: string;
-    lat: number;
-    lon: number;
-    local_names: any;
-  }>;
+  data: locationList | null;
   isLoading: boolean;
+}
+
+export interface locationList {
+  name: string;
+  country: string;
+  state: string;
+  lat: number;
+  lon: number;
+  local_names: Record<string, string>;
 }
