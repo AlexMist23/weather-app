@@ -9,12 +9,12 @@ import styles from "./nav.module.css";
 
 export const Nav = () => {
   const pathname = usePathname();
-  console.log;
+  const componentPath = "/forecast";
   return (
     <nav className={styles.nav}>
       <Link
         className={`${styles.link} ${
-          pathname ==="/forecast/today" ? styles.active : ""
+          pathname === componentPath + "/today" ? styles.active : ""
         }`}
         href={"/forecast/today"}
       >
@@ -22,7 +22,7 @@ export const Nav = () => {
       </Link>
       <Link
         className={`${styles.link} ${
-          pathname === "/forecast/day-5" ? styles.active : ""
+          pathname === componentPath + "/day-5" ? styles.active : ""
         }`}
         href={"/forecast/day-5"}
       >
@@ -30,7 +30,7 @@ export const Nav = () => {
       </Link>
       <Link
         className={`${styles.link} ${
-          pathname === "/forecast/maps" ? styles.active : ""
+          pathname === componentPath + "/maps" ? styles.active : ""
         }`}
         href={"/forecast/maps"}
       >
@@ -38,7 +38,7 @@ export const Nav = () => {
       </Link>
       <Link
         className={`${styles.link} ${
-          pathname === "/forecast/polution" ? styles.active : ""
+          pathname === componentPath + "/polution" ? styles.active : ""
         }`}
         href={"/forecast/polution"}
       >
