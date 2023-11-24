@@ -8,22 +8,17 @@
   text-align: center;
 }
 
-.span::first-letter {
+.span {
   text-transform: capitalize;
-}
-
-.p::first-letter {
-  text-transform: capitalize;
+  margin: 0 0.2em;
 }
 
 .container p {
   display: flex;
+  justify-content: center;
   flex-direction: row;
-  height: 2em;
-  line-height: 2em;
 }
 
 .container p img{
-  height: 100%;
   margin-right: 0.5em;
 }

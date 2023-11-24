@@ -26,7 +26,7 @@ export const SearchBar = () => {
 
   const clearLocationList = useCallback(() => {
     if (locationList.length > 0) {
-      dispatch(locationListSlice.actions.clearData());
+      dispatch(locationListSlice.actions.resetState());
       setSelectedPosition(null);
     }
   }, [dispatch, locationList]);

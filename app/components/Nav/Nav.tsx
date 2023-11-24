@@ -14,17 +14,9 @@ export const Nav = () => {
     <nav className={styles.nav}>
       <Link
         className={`${styles.link} ${
-          pathname === componentPath + "/today" ? styles.active : ""
+          pathname === componentPath + "/forecast5" ? styles.active : ""
         }`}
-        href={"/forecast/today"}
-      >
-        Today
-      </Link>
-      <Link
-        className={`${styles.link} ${
-          pathname === componentPath + "/day-5" ? styles.active : ""
-        }`}
-        href={"/forecast/day-5"}
+        href={componentPath + "/forecast5"}
       >
         5 Day
       </Link>
@@ -32,7 +24,7 @@ export const Nav = () => {
         className={`${styles.link} ${
           pathname === componentPath + "/maps" ? styles.active : ""
         }`}
-        href={"/forecast/maps"}
+        href={componentPath + "/maps"}
       >
         Maps
       </Link>
@@ -40,7 +32,7 @@ export const Nav = () => {
         className={`${styles.link} ${
           pathname === componentPath + "/polution" ? styles.active : ""
         }`}
-        href={"/forecast/polution"}
+        href={componentPath + "/polution"}
       >
         Polution
       </Link>
