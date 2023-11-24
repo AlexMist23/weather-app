@@ -1,6 +1,8 @@
 /* Core */
 import { createSlice } from "@reduxjs/toolkit";
 
+import type { location } from "../..";
+
 /* Instruments */
 import { setLocationListAsync } from "./thunks";
 
@@ -35,13 +37,4 @@ export const locationListSlice = createSlice({
 export interface locationListSliceState {
   data: Array<location> | [];
   isLoading: boolean;
-}
-
-interface location {
-  name: string;
-  country: string;
-  state: string;
-  lat: number;
-  lon: number;
-  local_names: Record<string, string>;
 }
