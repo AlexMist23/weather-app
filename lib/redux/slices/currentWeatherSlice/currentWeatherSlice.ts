@@ -13,12 +13,8 @@ export const currentWeatherSlice = createSlice({
   name: "currentWeather",
   initialState,
   reducers: {
-    clearData: (state) => {
-      return (state = {
-        ...state,
-        data: null,
-        isLoading: false,
-      });
+    resetState: (state) => {
+      state = initialState
     },
   },
   extraReducers: (builder) => {

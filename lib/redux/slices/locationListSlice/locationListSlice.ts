@@ -15,9 +15,8 @@ export const locationListSlice = createSlice({
   name: "locationList",
   initialState,
   reducers: {
-    clearData: (state) => {
-      state.data = [];
-      state.isLoading = false;
+    resetState: (state) => {
+      state = initialState;
     },
   },
   extraReducers: (builder) => {
