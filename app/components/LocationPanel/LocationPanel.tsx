@@ -3,8 +3,9 @@
 /* Instruments */
 import {
   useSelector,
-  selectLocation,
-  selectCurrentWeatherStatus,
+  selectLocationData,
+  selectCurrentWeatherIsLoading,
+  selectLocationisLoading,
 } from "@/lib/redux";
 
 import styles from "./locationpanel.module.css";
@@ -16,12 +17,13 @@ import { MainIcon } from "./MainIcon/MainIcon";
 import { LocalDate } from "./LocalDate/LocalDate";
 
 export const LocationPanel = () => {
-  const location = useSelector(selectLocation);
-  const locationListIsLoading = useSelector(selectCurrentWeatherStatus);
+  const location = useSelector(selectLocationData);
+  const locationIsLoading = useSelector(selectLocationisLoading);
+  const weatherIsLoading = useSelector(selectCurrentWeatherIsLoading);
 
   return (
     <div className={styles.LocationPanel}>
-      {locationListIsLoading ? (
+      {locationIsLoading || weatherIsLoading?(
         <div className={styles.loader}></div>
       ) : (
         <>

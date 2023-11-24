@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import {
   useSelector,
   useDispatch,
-  selectLocation,
+  selectLocationData,
   setLocationByCoordAsync,
   setCurrentWeatherAsync,
 } from "@/lib/redux";
@@ -25,7 +25,7 @@ export default function ForecastLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const location = useSelector(selectLocation);
+  const location = useSelector(selectLocationData);
   const dispatch = useDispatch();
 
   useEffect(() => {

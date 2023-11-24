@@ -1,7 +1,7 @@
 "use client";
 import {
   selectCurrentWeatherData,
-  selectCurrentWeatherStatus,
+  selectCurrentWeatherIsLoading,
   selectTemperatureScale,
   useSelector,
 } from "@/lib/redux";
@@ -13,7 +13,7 @@ import styles from "./mainicon.module.css";
 
 export const MainIcon = () => {
   const scale = useSelector(selectTemperatureScale);
-  const isLoading = useSelector(selectCurrentWeatherStatus);
+  const isLoading = useSelector(selectCurrentWeatherIsLoading);
   const currentWeather = useSelector(selectCurrentWeatherData);
   const iconName = currentWeather?.weather[0].icon;
   const temp = currentWeather?.main.temp;
