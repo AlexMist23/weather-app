@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+
 /* Components */
 import { Providers } from "@/lib/providers";
 
@@ -10,6 +12,7 @@ export default function RootLayout(props: React.PropsWithChildren) {
       <html lang="en">
         <body>
           {props.children}
+          <Analytics />
         </body>
       </html>
     </Providers>
