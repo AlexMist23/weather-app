@@ -1,5 +1,6 @@
 "use client";
 import {
+  type currentWeather,
   selectCurrentWeatherData,
   selectCurrentWeatherIsLoading,
   selectTemperatureScale,
@@ -11,10 +12,12 @@ import { tempConvert } from "@/lib/tempConvert";
 /* Instruments */
 import styles from "./mainicon.module.css";
 
-export const MainIcon = () => {
+export const MainIcon: React.FC<{ weather: currentWeather }> = ({
+  weather,
+}) => {
   const scale = useSelector(selectTemperatureScale);
   const isLoading = useSelector(selectCurrentWeatherIsLoading);
-  const currentWeather = useSelector(selectCurrentWeatherData);
+  const currentWeather = weather;
   const iconName = currentWeather?.weather[0].icon;
   const temp = currentWeather?.main.temp;
 
