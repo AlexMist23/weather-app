@@ -22,7 +22,7 @@ export const MainIcon: React.FC<{ weather: currentWeather }> = ({
   const { icon: iconName, main: iconAlt } = weather.weather[0];
   const { temp } = weather.main;
 
-  const iconsPath = "./static/images/";
+  const iconsPath = "/static/images/";
   return (
     <div className={styles.div}>
       {isLoading && !temp ? (

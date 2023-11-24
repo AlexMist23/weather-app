@@ -47,7 +47,7 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
           src={"/static/images/wind-arrow-icon.svg"}
           height={20}
           width={20}
-          alt="pressure-icon"
+          alt="wind arrow icon"
         />{" "}
         {windSpeed}m/s {windDegToString(windDeg)}
       </p>
@@ -56,7 +56,7 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
           src={"/static/images/pressure-icon.svg"}
           height={20}
           width={20}
-          alt="pressure-icon"
+          alt="pressure icon"
         />
         {pressure}hPa
       </p>

@@ -112,7 +112,7 @@ export const SearchBar = () => {
         />
         <button className={styles.button} onClick={searchHandler}>
           <Image
-            src={"./static/images/search-icon.svg"}
+            src={"/static/images/search-icon.svg"}
             height={100}
             width={100}
             alt="search icon"
