@@ -1,7 +1,6 @@
 "use client";
 import {
   type currentWeather,
-  selectCurrentWeatherData,
   selectCurrentWeatherIsLoading,
   selectTemperatureScale,
   useSelector,
@@ -15,11 +14,13 @@ import styles from "./mainicon.module.css";
 export const MainIcon: React.FC<{ weather: currentWeather }> = ({
   weather,
 }) => {
-  const scale = useSelector(selectTemperatureScale);
+  const { name: tempScale, symbol: scaleSymbol } = useSelector(
+    selectTemperatureScale
+  );
   const isLoading = useSelector(selectCurrentWeatherIsLoading);
-  const currentWeather = weather;
-  const iconName = currentWeather?.weather[0].icon;
-  const temp = currentWeather?.main.temp;
+
+  const { icon: iconName, main: iconAlt } = weather.weather[0];
+  const { temp } = weather.main;
 
   const iconsPath = "./static/images/";
   return (
@@ -29,13 +30,16 @@ export const MainIcon: React.FC<{ weather: currentWeather }> = ({
       ) : (
         <>
           <Image
-          src={iconsPath + iconName + ".svg"}
-          height={200}
-          width={200}
-          alt="current weather icon"
-          loading="lazy"
+            src={iconsPath + iconName + ".svg"}
+            height={200}
+            width={200}
+            alt={`${iconAlt} icon`}
+            loading="lazy"
           />
-          <p className={styles.p}>{tempConvert(temp, scale)}</p>
+          <p className={styles.p}>
+            {tempConvert(temp, tempScale)}
+            {scaleSymbol}
+          </p>
         </>
       )}
     </div>

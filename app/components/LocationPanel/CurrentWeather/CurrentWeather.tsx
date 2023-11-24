@@ -5,7 +5,6 @@
 import {
   useSelector,
   selectTemperatureScale,
-  selectTemperatureSymbol,
   type currentWeather,
 } from "@/lib/redux";
 
@@ -20,8 +19,9 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
   weather,
 }) => {
   const currentWeather = weather!;
-  const tempScale = useSelector(selectTemperatureScale);
-  const tempSymbol = useSelector(selectTemperatureSymbol);
+  const { name: tempScale, symbol: scaleSymbol } = useSelector(
+    selectTemperatureScale
+  );
 
   const { pressure, humidity, feels_like, temp } = currentWeather.main;
   const { speed: windSpeed, deg: windDeg } = currentWeather.wind;
@@ -34,7 +34,7 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
     <div className={styles.container}>
       <div className={styles.description}>
         <span className={styles.span}>
-          {`Feels like ${feelsLike}${tempSymbol}.`}
+          {`Feels like ${feelsLike}${scaleSymbol}.`}
         </span>
         <span className={styles.span}>{description}.</span>
         <span className={styles.span}>{breezeCalc(windSpeed!)}.</span>
@@ -62,7 +62,7 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
       <p className={styles.p}>Humidity: {humidity}%</p>
       <p className={styles.p}>
         Dew Point: {dewPointTemp}
-        {tempSymbol}
+        {scaleSymbol}
       </p>
     </div>
   );
