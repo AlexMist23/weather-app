@@ -1,8 +1,6 @@
-export const tempConvert = (
-  temp: number | undefined,
-  scale: string
-) => {
-  if (!temp) return
-  if (scale == "Celcius") return `${(temp - 273.15).toFixed(0)}°C`;
-  else return `${(temp * 1.8 - 459.67).toFixed(0)}°F`;
+export const tempConvert = (temp: number, scale: string): number => {
+  let convertedNum = null
+  if (scale == "Celcius") convertedNum = (temp - 273.15)
+  else convertedNum = (temp * 1.8 - 459.67)
+  return Math.round(convertedNum)
 };

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: temperatureScaleSliceState = {
   scale: "Celcius",
+  symbol: "°C"
 };
 
 export const temperatureScaleSlice = createSlice({
@@ -10,10 +11,10 @@ export const temperatureScaleSlice = createSlice({
   initialState,
   reducers: {
     changeToCelcius: (state) => {
-      return (state = { scale: "Celcius" });
+      return (state = { scale: "Celcius", symbol: "°C" });
     },
     changeToFahrenheit: (state) => {
-      return (state = { scale: "Fahrenheit" });
+      return (state = { scale: "Fahrenheit", symbol: "°F" });
     },
   },
 });
@@ -22,4 +23,5 @@ export const temperatureScaleSlice = createSlice({
 
 export interface temperatureScaleSliceState {
   scale: string;
+  symbol: string;
 }

@@ -5,6 +5,7 @@
 import {
   useSelector,
   selectTemperatureScale,
+  selectTemperatureSymbol,
   type currentWeather,
 } from "@/lib/redux";
 
@@ -12,24 +13,29 @@ import { breezeCalc } from "@/lib/breezeCalc";
 import { tempConvert } from "@/lib/tempConvert";
 import styles from "./currentweather.module.css";
 import Image from "next/image";
+import { dewPointCalc } from "@/lib/dewPointCalc";
 
 export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
   weather,
 }) => {
-  const currentWeather = weather;
-  const scale = useSelector(selectTemperatureScale);
+  const currentWeather = weather!;
+  const tempScale = useSelector(selectTemperatureScale);
+  const tempSymbol = useSelector(selectTemperatureSymbol);
 
-  const description = currentWeather?.weather[0]?.description;
-  const windSpeed = currentWeather?.wind.speed;
-  const { feels_like, pressure, humidity } = currentWeather?.main || {};
+  const { pressure, humidity, feels_like, temp } = currentWeather.main;
+  const { speed: windSpeed, deg: windDeg } = currentWeather.wind;
+  const { description } = currentWeather.weather[0];
+
+  const feelsLike = tempConvert(feels_like, tempScale);
+  const dewPointTemp = tempConvert(dewPointCalc(temp, humidity), tempScale);
 
   return (
     <div className={styles.container}>
       <div className={styles.description}>
         <span className={styles.span}>
-          {`Feels like ${tempConvert(feels_like, scale)}. `}
+          {`Feels like ${feelsLike}${tempSymbol}.`}
         </span>
-        <span className={styles.span}>{description}. </span>
+        <span className={styles.span}>{description}.</span>
         <span className={styles.span}>{breezeCalc(windSpeed!)}.</span>
       </div>
 
@@ -41,9 +47,13 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
           width={20}
           alt="pressure-icon"
         />
-        pressure: {pressure}
+        {pressure}hPa
       </p>
-      <p className={styles.p}>humidity: {humidity}</p>
+      <p className={styles.p}>Humidity: {humidity}%</p>
+      <p className={styles.p}>
+        Dew Point: {dewPointTemp}
+        {tempSymbol}
+      </p>
     </div>
   );
 };
