@@ -13,7 +13,7 @@ export const locationSlice = createSlice({
   name: "location",
   initialState,
   reducers: {
-    setLocation: (state, action: PayloadAction<location>) => {
+    setLocation: (state, action: PayloadAction<locationData>) => {
       state.data = action.payload
     },
   },
@@ -32,10 +32,10 @@ export const locationSlice = createSlice({
 
 /* Types */
 export interface locationSliceState {
-  data: location | null;
+  data: locationData | null;
   isLoading: boolean;
 }
-export interface location {
+export interface locationData {
   name: string;
   country: string;
   state: string;
