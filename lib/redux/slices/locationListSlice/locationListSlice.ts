@@ -1,7 +1,7 @@
 /* Core */
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { location } from "../..";
+import type { locationData } from "../..";
 
 /* Instruments */
 import { setLocationListAsync } from "./thunks";
@@ -15,9 +15,7 @@ export const locationListSlice = createSlice({
   name: "locationList",
   initialState,
   reducers: {
-    resetState: (state) => {
-      state = initialState;
-    },
+    resetState: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -34,6 +32,6 @@ export const locationListSlice = createSlice({
 
 /* Types */
 export interface locationListSliceState {
-  data: Array<location> | [];
+  data: Array<locationData> | [];
   isLoading: boolean;
 }

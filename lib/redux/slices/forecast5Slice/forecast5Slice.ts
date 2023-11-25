@@ -13,9 +13,7 @@ export const forecast5Slice = createSlice({
   name: "forecast5",
   initialState,
   reducers: {
-    resetState: (state) => {
-      state = initialState;
-    },
+    resetState: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -23,11 +21,8 @@ export const forecast5Slice = createSlice({
         state = { ...state, isLoading: true };
       })
       .addCase(setForecast5Async.fulfilled, (state, action) => {
-        return (state = {
-          ...state,
-          isLoading: false,
-          data: { ...action.payload },
-        });
+        state.isLoading = false;
+        state.data = action.payload;
       });
   },
 });
