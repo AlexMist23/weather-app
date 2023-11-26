@@ -6,7 +6,8 @@ import { setLocationByCoordAsync } from "./thunks";
 
 const initialState: locationSliceState = {
   data: null,
-  isLoading: false
+  status: "idle",
+  error: null,
 };
 
 export const locationSlice = createSlice({
@@ -14,18 +15,22 @@ export const locationSlice = createSlice({
   initialState,
   reducers: {
     setLocation: (state, action: PayloadAction<locationData>) => {
-      state.data = action.payload
+      state.data = action.payload;
+      state.status = "succeeded";
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(setLocationByCoordAsync.pending, (state) => {
-        state.isLoading = true;
+        state.status = "idle";
       })
-
       .addCase(setLocationByCoordAsync.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.status = "succeeded";
         state.data = action.payload;
+      })
+      .addCase(setLocationByCoordAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message!;
       });
   },
 });
@@ -33,7 +38,8 @@ export const locationSlice = createSlice({
 /* Types */
 export interface locationSliceState {
   data: locationData | null;
-  isLoading: boolean;
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
 }
 export interface locationData {
   name: string;
