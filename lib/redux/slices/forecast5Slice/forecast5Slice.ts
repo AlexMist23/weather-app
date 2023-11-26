@@ -6,7 +6,8 @@ import { setForecast5Async } from "./thunks";
 
 const initialState: forecast5SliceState = {
   data: null,
-  isLoading: true,
+  status: "idle",
+  error: null,
 };
 
 export const forecast5Slice = createSlice({
@@ -18,11 +19,15 @@ export const forecast5Slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(setForecast5Async.pending, (state) => {
-        state = { ...state, isLoading: true };
+        state.status = "loading";
       })
       .addCase(setForecast5Async.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.status = "succeeded";
         state.data = action.payload;
+      })
+      .addCase(setForecast5Async.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message!;
       });
   },
 });
@@ -31,7 +36,8 @@ export const forecast5Slice = createSlice({
 
 export interface forecast5SliceState {
   data: forecast5Data | null;
-  isLoading: boolean;
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
 }
 
 export interface forecast5Data {

@@ -6,7 +6,8 @@ import { setCurrentWeatherAsync } from "./thunks";
 
 const initialState: currentWeatherSliceState = {
   data: null,
-  isLoading: true,
+  status: "idle",
+  error: null,
 };
 
 export const currentWeatherSlice = createSlice({
@@ -18,14 +19,15 @@ export const currentWeatherSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(setCurrentWeatherAsync.pending, (state) => {
-        state = { ...state, isLoading: true };
+        state.status = "loading";
       })
       .addCase(setCurrentWeatherAsync.fulfilled, (state, action) => {
-        return (state = {
-          ...state,
-          isLoading: false,
-          data: { ...action.payload },
-        });
+        state.status = "succeeded";
+        state.data = action.payload;
+      })
+      .addCase(setCurrentWeatherAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message!;
       });
   },
 });
@@ -34,7 +36,8 @@ export const currentWeatherSlice = createSlice({
 
 export interface currentWeatherSliceState {
   data: currentWeather | null;
-  isLoading: boolean;
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
 }
 
 export interface currentWeather {

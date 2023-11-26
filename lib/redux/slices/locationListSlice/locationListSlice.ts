@@ -1,14 +1,16 @@
 /* Core */
 import { createSlice } from "@reduxjs/toolkit";
 
+/* Types */
 import type { locationData } from "../..";
 
 /* Instruments */
 import { setLocationListAsync } from "./thunks";
 
 const initialState: locationListSliceState = {
-  isLoading: false,
   data: [],
+  status: "idle",
+  error: null,
 };
 
 export const locationListSlice = createSlice({
@@ -20,12 +22,15 @@ export const locationListSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(setLocationListAsync.pending, (state) => {
-        state.isLoading = true;
+        state.status = "loading";
       })
-
       .addCase(setLocationListAsync.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.status = "succeeded";
         state.data = action.payload;
+      })
+      .addCase(setLocationListAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message!;
       });
   },
 });
@@ -33,5 +38,6 @@ export const locationListSlice = createSlice({
 /* Types */
 export interface locationListSliceState {
   data: Array<locationData> | [];
-  isLoading: boolean;
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
 }
