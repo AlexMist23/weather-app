@@ -1,8 +1,8 @@
-import { type location } from "../..";
+import { type locationData } from "../..";
 
 export const fetchLocationList = async (
   city: string
-): Promise<{ data: Array<location> }> => {
+): Promise<{ data: Array<locationData> }> => {
   const response = await fetch("/api/location-list", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
