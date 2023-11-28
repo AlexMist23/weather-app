@@ -1,15 +1,14 @@
 "use client";
 import Image from "next/image";
 import { useState, useCallback, useRef, useEffect } from "react";
+import type { locationData } from "@/lib/redux";
 import {
   setLocationListAsync,
   locationSlice,
   locationListSlice,
   useDispatch,
   useSelector,
-  type location,
-  selectLocationListisLoading,
-  selectLocationListData,
+  selectLocationList,
 } from "@/lib/redux";
 import styles from "./searchbar.module.css";
 
@@ -18,14 +17,13 @@ export const SearchBar = () => {
   const searchBarRef = useRef<HTMLDivElement | null>(null);
   const ulRef = useRef<HTMLUListElement | null>(null);
 
-  const [cityInput, setCityInput] = useState("");
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
+  const [cityInput, setCityInput] = useState("");
 
-  const isLoading = useSelector(selectLocationListisLoading);
-  const locationList = useSelector(selectLocationListData);
+  const locationList = useSelector(selectLocationList);
 
   const clearLocationList = useCallback(() => {
-    if (locationList.length > 0) {
+    if (locationList.data.length > 0) {
       dispatch(locationListSlice.actions.resetState());
       setSelectedPosition(null);
     }
@@ -36,7 +34,7 @@ export const SearchBar = () => {
   }, [dispatch, cityInput]);
 
   const handleLiClick = useCallback(
-    (location: location) => {
+    (location: locationData) => {
       dispatch(locationSlice.actions.setLocation(location));
       clearLocationList();
       setCityInput("");
@@ -51,10 +49,10 @@ export const SearchBar = () => {
         setSelectedPosition((prev) => {
           if (prev === null) return 0;
           if (e.key === "ArrowUp") return Math.max(prev - 1, 0);
-          return Math.min(prev + 1, locationList.length - 1);
+          return Math.min(prev + 1, locationList.data.length - 1);
         });
       } else if (e.key === "Enter" && selectedPosition !== null) {
-        handleLiClick(locationList[selectedPosition]);
+        handleLiClick(locationList.data[selectedPosition]);
       }
     },
     [locationList, selectedPosition, handleLiClick]
@@ -120,18 +118,18 @@ export const SearchBar = () => {
         </button>
       </div>
       <div className={styles.ulContainer}>
-        {isLoading ? (
+        {locationList.status === "loading" ? (
           <div className={styles.loader} />
         ) : (
           <>
-            {locationList?.length > 0 && (
+            {locationList.data?.length > 0 && (
               <ul
                 className={styles.ul}
                 onKeyDown={handleKeyDown}
                 tabIndex={-1}
                 ref={ulRef}
               >
-                {locationList?.map((location: location, index: number) => (
+                {locationList?.data.map((location: locationData, index: number) => (
                   <li
                     className={`${styles.li} ${
                       index === selectedPosition ? styles.selected : ""

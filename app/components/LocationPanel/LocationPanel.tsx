@@ -1,12 +1,16 @@
 "use client";
 
+/* Core */
+import { useEffect } from "react";
+
 /* Instruments */
 import {
   useSelector,
-  selectLocationData,
-  selectCurrentWeatherIsLoading,
-  selectLocationisLoading,
-  selectCurrentWeatherData,
+  useDispatch,
+  selectLocation,
+  selectCurrentWeather,
+  setLocationByCoordAsync,
+  setCurrentWeatherAsync,
 } from "@/lib/redux";
 
 import styles from "./locationpanel.module.css";
@@ -18,31 +22,49 @@ import { MainIcon } from "./MainIcon/MainIcon";
 import { LocalDate } from "./LocalDate/LocalDate";
 
 export const LocationPanel = () => {
-  const location = useSelector(selectLocationData);
-  const weather = useSelector(selectCurrentWeatherData);
-  const locationIsLoading = useSelector(selectLocationisLoading);
-  const weatherIsLoading = useSelector(selectCurrentWeatherIsLoading);
+  const dispatch = useDispatch();
+  const location = useSelector(selectLocation);
+  const weather = useSelector(selectCurrentWeather);
+
+  useEffect(() => {
+    if (!location.data) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let { latitude: lat, longitude: lon } = position.coords;
+        if (lat && lon) {
+          dispatch(setLocationByCoordAsync({ lat, lon }));
+        } else dispatch(setLocationByCoordAsync({ lat: 51.5072, lon: 0.1276 })); // London
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (location.data) {
+      dispatch(
+        setCurrentWeatherAsync({
+          lat: location.data.lat,
+          lon: location.data.lon,
+        })
+      );
+    }
+  }, [location.data]);
 
   return (
-    <div
-      className={`${styles.LocationPanel} ${
-        !locationIsLoading && !weatherIsLoading ? styles.loaded : ""
-      }`}
-    >
-      {locationIsLoading || weatherIsLoading ? (
+    <div className={styles.LocationPanel}>
+      {(location.status === "loading" || weather.status === "loading") && (
         <div className={styles.loader}></div>
-      ) : (
+      )}
+
+      {location.status === "succeeded" && <LocationName location={location.data!} />}
+      {location.status === "failed" && <p>{location.error}</p>}
+
+      {weather.status === "succeeded" && (
         <>
-          {location && <LocationName location={location} />}
-          {weather && (
-            <>
-              <LocalDate weather={weather} />
-              <MainIcon weather={weather} />
-              <CurrentWeather weather={weather} />
-            </>
-          )}
+          <LocalDate weather={weather.data!} />
+          <MainIcon weather={weather.data!} />
+          <CurrentWeather weather={weather.data!} />
         </>
       )}
+      {weather.status === "failed" && <p>{weather.error}</p>}
     </div>
   );
 };

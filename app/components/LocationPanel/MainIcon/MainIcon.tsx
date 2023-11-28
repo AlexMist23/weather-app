@@ -1,7 +1,7 @@
 "use client";
+import type { currentWeather } from "@/lib/redux";
 import {
-  type currentWeather,
-  selectCurrentWeatherIsLoading,
+  selectCurrentWeather,
   selectTemperatureScale,
   useSelector,
 } from "@/lib/redux";
@@ -17,31 +17,25 @@ export const MainIcon: React.FC<{ weather: currentWeather }> = ({
   const { name: tempScale, symbol: scaleSymbol } = useSelector(
     selectTemperatureScale
   );
-  const isLoading = useSelector(selectCurrentWeatherIsLoading);
-
   const { icon: iconName, main: iconAlt } = weather.weather[0];
   const { temp } = weather.main;
 
   const iconsPath = "/static/images/";
   return (
     <div className={styles.div}>
-      {isLoading && !temp ? (
-        <div className={styles.loader} />
-      ) : (
-        <>
-          <Image
-            src={iconsPath + iconName + ".svg"}
-            height={150}
-            width={150}
-            alt={`${iconAlt} icon`}
-            loading="lazy"
-          />
-          <p className={styles.p}>
-            {tempConvert(temp, tempScale)}
-            {scaleSymbol}
-          </p>
-        </>
-      )}
+      <>
+        <Image
+          src={iconsPath + iconName + ".svg"}
+          height={150}
+          width={150}
+          alt={`${iconAlt} icon`}
+          loading="lazy"
+        />
+        <p className={styles.p}>
+          {tempConvert(temp, tempScale)}
+          {scaleSymbol}
+        </p>
+      </>
     </div>
   );
 };

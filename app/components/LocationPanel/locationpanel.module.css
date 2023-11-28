@@ -38,17 +38,3 @@
     transform: rotate(360deg);
   }
 }
-
-.loaded {
-  animation: fade 0.5s ease-in;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}

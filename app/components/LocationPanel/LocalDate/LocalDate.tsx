@@ -1,7 +1,7 @@
 "use client";
 
 /* Instruments */
-import { type currentWeather } from "@/lib/redux";
+import type { currentWeather } from "@/lib/redux";
 
 import styles from "./localdate.module.css";
 

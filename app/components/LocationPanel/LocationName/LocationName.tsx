@@ -1,12 +1,12 @@
 "use client";
 
 /* Core */
-import { type location } from "@/lib/redux";
+import { type locationData } from "@/lib/redux";
 /* Instruments */
 import styles from "./locationname.module.css";
 import React from "react";
 
-export const LocationName: React.FC<{ location: location }> = ({
+export const LocationName: React.FC<{ location: locationData }> = ({
   location,
 }) => {
   const { name, country, state } = location;

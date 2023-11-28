@@ -22,11 +22,11 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
   const { name: tempScale, symbol: scaleSymbol } = useSelector(
     selectTemperatureScale
   );
-  const { visibility } = currentWeather
+  const { visibility } = currentWeather;
   const { pressure, humidity, feels_like, temp } = currentWeather.main;
   const { speed: windSpeed, deg: windDeg } = currentWeather.wind;
   const { description } = currentWeather.weather[0];
-
+  const [imgHeight, imgWidth] = [20, 20];
 
   const feelsLike = tempConvert(feels_like, tempScale);
   const dewPointTemp = tempConvert(dewPointCalc(temp, humidity), tempScale);
@@ -45,8 +45,8 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
         <Image
           style={{ transform: `rotate(${windDeg}deg)` }}
           src={"/static/images/wind-arrow-icon.svg"}
-          height={20}
-          width={20}
+          height={imgHeight}
+          width={imgWidth}
           alt="wind arrow icon"
         />{" "}
         {windSpeed}m/s {windDegToString(windDeg)}
@@ -54,8 +54,8 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
       <p className={styles.p}>
         <Image
           src={"/static/images/pressure-icon.svg"}
-          height={20}
-          width={20}
+          height={imgHeight}
+          width={imgWidth}
           alt="pressure icon"
         />
         {pressure}hPa

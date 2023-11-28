@@ -1,17 +1,3 @@
-"use client";
-
-/* Core */
-import { useEffect } from "react";
-
-/* Instruments */
-import {
-  useSelector,
-  useDispatch,
-  selectLocationData,
-  setLocationByCoordAsync,
-  setCurrentWeatherAsync,
-} from "@/lib/redux";
-
 /* Components */
 import { Nav } from "../components/Nav/Nav";
 import { SearchBar } from "../components/SearchBar/SearchBar";
@@ -25,26 +11,6 @@ export default function ForecastLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const location = useSelector(selectLocationData);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!location) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
-        dispatch(setLocationByCoordAsync({ lat, lon }));
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (location) {
-      dispatch(
-        setCurrentWeatherAsync({ lat: location.lat, lon: location.lon })
-      );
-    }
-  }, [location]);
   return (
     <>
       <section className={styles.leftPanel}>
