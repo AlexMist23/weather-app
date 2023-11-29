@@ -9,12 +9,16 @@ import styles from "./weekchart.module.css";
 import { tempConvert } from "@/lib/tempConvert";
 import {
   ResponsiveContainer,
-  AreaChart,
+  ComposedChart,
   XAxis,
+  YAxis,
   Label,
   Tooltip,
+  Line,
   Area,
-  LabelList
+  LabelList,
+  CartesianGrid,
+  ReferenceLine,
 } from "recharts";
 
 export const WeekChart = () => {
@@ -25,13 +29,22 @@ export const WeekChart = () => {
     chartData = data?.list.map((element) => {
       const dt = new Date(+`${element.dt}000`);
       const date = dt.toLocaleDateString("en-us", {
-        month: "2-digit",
-        day: "2-digit",
+        hour: "2-digit",
+        weekday: "short",
       });
-      const temp = tempConvert(element.main.temp, tempScale.name);
+      const temp = +tempConvert(
+        element.main.temp,
+        tempScale.name,
+        false
+      ).toFixed(2);
+      const tempR = Math.round(temp);
+      const tempLabel =
+        dt.getHours() === 13 || dt.getHours() === 1 ? `${tempR}°C` : null;
       return {
         date,
+        tempR,
         temp,
+        tempLabel,
       };
     });
   }
@@ -39,23 +52,26 @@ export const WeekChart = () => {
     <div className={styles.div}>
       {chartData && (
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={chartData}>
-            <XAxis dataKey="date">
-              <Label />
-            </XAxis>
+          <ComposedChart data={chartData} margin={{ left: -40 }}>
+            <CartesianGrid/>
+            <ReferenceLine y={0} stroke="lightblue" strokeDasharray="0" />
             <Tooltip />
-            <Area
-              connectNulls
+            <Line
               type="natural"
               dataKey="temp"
               strokeWidth={3}
               stroke="#12355b"
-              fill="#12355b"
               dot={false}
             >
-              <LabelList dataKey={'temp'} position={'top'}/>
-            </Area>
-          </AreaChart>
+              <LabelList dataKey="tempLabel" position='top' offset={15}/>
+            </Line>
+            <XAxis
+              dataKey="date"
+              interval={"equidistantPreserveStart"}
+              padding={"no-gap"}
+            ></XAxis>
+            <YAxis dataKey="tempR"></YAxis>
+          </ComposedChart>
         </ResponsiveContainer>
       )}
     </div>
