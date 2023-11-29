@@ -7,12 +7,20 @@ import type { locationData } from "../..";
 /* Instruments */
 import { setLocationListAsync } from "./thunks";
 
+// State
+export interface locationListSliceState {
+  data: locationData[] | [];
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+}
+
 const initialState: locationListSliceState = {
   data: [],
   status: "idle",
   error: null,
 };
 
+// Slice
 export const locationListSlice = createSlice({
   name: "locationList",
   initialState,
@@ -34,10 +42,3 @@ export const locationListSlice = createSlice({
       });
   },
 });
-
-/* Types */
-export interface locationListSliceState {
-  data: Array<locationData> | [];
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null;
-}

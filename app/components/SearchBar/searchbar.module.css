@@ -1,7 +1,7 @@
 .searchBar {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
   color: black;
   position: relative;
 }
@@ -9,15 +9,15 @@
 .inputContainer {
   display: flex;
   height: 2em;
-  border: 0.2em white solid;
   background-color: white;
+  border: 0.2em white solid;
   border-radius: 0.1em;
 }
 
 .button {
+  width: 2em;
   color: var(--gray-dark);
   background-color: var(--white);
-  width: 2em;
   cursor: pointer;
 }
 
@@ -34,17 +34,17 @@
 .ul {
   position: absolute;
   width: 100%;
+  background-color: var(--white);
   border: 0.2em white solid;
   border-radius: 0.1em;
-  background-color: var(--white);
   list-style: none;
   outline: var(--berkeley-blue) solid;
 }
 
 .li {
   padding: 0.2em 0.3em;
-  cursor: pointer;
   font-size: medium;
+  cursor: pointer;
   border-radius: 0.1em;
 }
 
@@ -57,24 +57,25 @@
   position: absolute;
   width: 100%;
   height: 2em;
-  background: linear-gradient(-45deg,
-      var(--gray) 40%,
-      rgb(255, 255, 255) 50%,
-      var(--gray) 60%);
-  background-size: 200% 100%;
   border-radius: 0 0 0.1em 0.1em;
+  background: linear-gradient(
+    -45deg,
+    var(--gray) 40%,
+    rgb(255, 255, 255) 50%,
+    var(--gray) 60%
+  );
+  background-size: 200% 100%;
+  opacity: 75%;
+  fill-opacity: 10%;
+  outline: var(--berkeley-blue) solid;
   color: #00000000;
   animation: gradient 0.5s linear infinite;
-  fill-opacity: 10%;
-  opacity: 75%;
-  outline: var(--berkeley-blue) solid;
 }
 
 @keyframes gradient {
   0% {
     background-position: 0% 0%;
   }
-
   100% {
     background-position: -200% 0%;
   }

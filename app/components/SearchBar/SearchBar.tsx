@@ -1,27 +1,34 @@
 "use client";
-import Image from "next/image";
+
+/* Core */
 import { useState, useCallback, useRef, useEffect } from "react";
-import type { locationData } from "@/lib/redux";
+import Image from "next/image";
+
+/* Instruments */
+import { useDispatch, useSelector} from "@/lib/redux";
 import {
   setLocationListAsync,
   locationSlice,
   locationListSlice,
-  useDispatch,
-  useSelector,
   selectLocationList,
 } from "@/lib/redux";
+import type { locationData } from "@/lib/redux";
+
+/* CSS */
 import styles from "./searchbar.module.css";
 
 export const SearchBar = () => {
+  // State and refs
   const dispatch = useDispatch();
   const searchBarRef = useRef<HTMLDivElement | null>(null);
   const ulRef = useRef<HTMLUListElement | null>(null);
-
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
   const [cityInput, setCityInput] = useState("");
 
+  // Select location list data
   const locationList = useSelector(selectLocationList);
 
+  // Clear location list
   const clearLocationList = useCallback(() => {
     if (locationList.data.length > 0) {
       dispatch(locationListSlice.actions.resetState());
@@ -29,10 +36,12 @@ export const SearchBar = () => {
     }
   }, [dispatch, locationList]);
 
+  // Search handler
   const searchHandler = useCallback(() => {
     dispatch(setLocationListAsync(cityInput));
   }, [dispatch, cityInput]);
 
+  // Handle click on location list item
   const handleLiClick = useCallback(
     (location: locationData) => {
       dispatch(locationSlice.actions.setLocation(location));
@@ -42,8 +51,10 @@ export const SearchBar = () => {
     [dispatch, clearLocationList]
   );
 
+  // Handle key down events
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLUListElement>) => {
+      // Handle arrow up/down and enter keys
       if (e.key === "ArrowUp" || e.key === "ArrowDown") {
         e.preventDefault();
         setSelectedPosition((prev) => {
@@ -58,6 +69,7 @@ export const SearchBar = () => {
     [locationList, selectedPosition, handleLiClick]
   );
 
+  // Handle click outside search bar to clear location list
   const handleClick = useCallback(
     (event: MouseEvent) => {
       if (
@@ -70,6 +82,7 @@ export const SearchBar = () => {
     [clearLocationList]
   );
 
+  // Handle key press events
   const handleKeyPress = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Enter") {
@@ -87,6 +100,7 @@ export const SearchBar = () => {
     [dispatch, cityInput]
   );
 
+  // Add event listener for click outside search bar
   useEffect(() => {
     window.addEventListener("mousedown", handleClick);
     return () => {
@@ -94,8 +108,10 @@ export const SearchBar = () => {
     };
   }, [handleClick]);
 
+  // Render
   return (
     <div className={styles.searchBar} ref={searchBarRef}>
+      {/* Search input and button */}
       <div className={styles.inputContainer}>
         <input
           className={styles.input}
@@ -117,6 +133,8 @@ export const SearchBar = () => {
           />
         </button>
       </div>
+
+      {/* Location list */}
       <div className={styles.ulContainer}>
         {locationList.status === "loading" ? (
           <div className={styles.loader} />
@@ -129,17 +147,19 @@ export const SearchBar = () => {
                 tabIndex={-1}
                 ref={ulRef}
               >
-                {locationList?.data.map((location: locationData, index: number) => (
-                  <li
-                    className={`${styles.li} ${
-                      index === selectedPosition ? styles.selected : ""
-                    }`}
-                    key={index}
-                    onClick={() => handleLiClick(location)}
-                  >
-                    {location.name}, {location.state}, {location.country}
-                  </li>
-                ))}
+                {locationList?.data.map(
+                  (location: locationData, index: number) => (
+                    <li
+                      className={`${styles.li} ${
+                        index === selectedPosition ? styles.selected : ""
+                      }`}
+                      key={index}
+                      onClick={() => handleLiClick(location)}
+                    >
+                      {location.name}, {location.state}, {location.country}
+                    </li>
+                  )
+                )}
               </ul>
             )}
           </>

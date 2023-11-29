@@ -4,38 +4,33 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-/* Instruments */
+/* CSS */
 import styles from "./nav.module.css";
 
 export const Nav = () => {
   const pathname = usePathname();
   const componentPath = "/forecast";
+  
+  // Define navigation items
+  const navItems = [
+    { path: componentPath + "/forecast5", label: "5 Day" },
+    { path: componentPath + "/maps", label: "Maps" },
+    { path: componentPath + "/polution", label: "Polution" },
+  ];
+
   return (
     <nav className={styles.nav}>
-      <Link
-        className={`${styles.link} ${
-          pathname === componentPath + "/forecast5" ? styles.active : ""
-        }`}
-        href={componentPath + "/forecast5"}
-      >
-        5 Day
-      </Link>
-      <Link
-        className={`${styles.link} ${
-          pathname === componentPath + "/maps" ? styles.active : ""
-        }`}
-        href={componentPath + "/maps"}
-      >
-        Maps
-      </Link>
-      <Link
-        className={`${styles.link} ${
-          pathname === componentPath + "/polution" ? styles.active : ""
-        }`}
-        href={componentPath + "/polution"}
-      >
-        Polution
-      </Link>
+      {navItems.map((item, index) => (
+        <Link
+          key={index}
+          href={item.path}
+          className={`${styles.link} ${
+            pathname === item.path ? styles.active : ""
+          }`}
+        >
+          {item.label}
+        </Link>
+      ))}
     </nav>
   );
 };

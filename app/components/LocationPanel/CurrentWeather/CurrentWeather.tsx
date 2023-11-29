@@ -1,55 +1,62 @@
-"use client";
+/* Core */ 
+import Image from "next/image";
 
 /* Instruments */
-
+import { useSelector } from "@/lib/redux";
 import {
-  useSelector,
   selectTemperatureScale,
   type currentWeather,
 } from "@/lib/redux";
 
-import { breezeCalc } from "@/lib/breezeCalc";
-import { tempConvert } from "@/lib/tempConvert";
-import styles from "./currentweather.module.css";
-import Image from "next/image";
-import { dewPointCalc } from "@/lib/dewPointCalc";
-import { windDegToString } from "@/lib/windDegToString";
+import { breezeCalc } from "@/lib/breezeCalc"; // Importing breeze calculation function
+import { tempConvert } from "@/lib/tempConvert"; // Importing temperature conversion function
+import { dewPointCalc } from "@/lib/dewPointCalc"; // Importing dew point calculation function
+import { windDegToString } from "@/lib/windDegToString"; // Importing wind degree conversion function
 
-export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
+/* CSS */
+import styles from "./currentweather.module.css"; // Importing styles for the current weather component
+
+
+export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({ 
   weather,
 }) => {
-  const currentWeather = weather!;
-  const { name: tempScale, symbol: scaleSymbol } = useSelector(
+  const currentWeather = weather!; // Assigning weather data to 'currentWeather' variable
+
+  const { name: tempScale, symbol: scaleSymbol } = useSelector( // Extracting temperature scale and symbol from Redux
     selectTemperatureScale
   );
-  const { visibility } = currentWeather;
-  const { pressure, humidity, feels_like, temp } = currentWeather.main;
-  const { speed: windSpeed, deg: windDeg } = currentWeather.wind;
-  const { description } = currentWeather.weather[0];
+
+  const { // Destructuring weather data for easier access
+    visibility,
+    main: { pressure, humidity, feels_like: feelsLike, temp },
+    wind: { speed: windSpeed, deg: windDeg },
+    weather: [{ description }],
+  } = currentWeather;
+
   const [imgHeight, imgWidth] = [20, 20];
 
-  const feelsLike = tempConvert(feels_like, tempScale);
-  const dewPointTemp = tempConvert(dewPointCalc(temp, humidity), tempScale);
+  const convertedFeelsLike = tempConvert(feelsLike, tempScale); // Converting 'feelsLike' temperature to selected scale
+  const dewPointTemp = tempConvert(dewPointCalc(temp, humidity), tempScale); // Calculating and converting dew point temperature
 
   return (
-    <div className={styles.container}>
-      <div className={styles.description}>
+    <div className={styles.container}> 
+      <div className={styles.description}> 
         <span className={styles.span}>
-          {`Feels like ${feelsLike}${scaleSymbol}.`}
+          {`Feels like ${convertedFeelsLike}${scaleSymbol}.`} {/* Displaying 'Feels like' temperature */}
         </span>
-        <span className={styles.span}>{description}.</span>
-        <span className={styles.span}>{breezeCalc(windSpeed!)}.</span>
+        <span className={styles.span}>{description}.</span> {/* Displaying weather description */}
+        <span className={styles.span}>{breezeCalc(windSpeed!)}.</span> {/* Displaying breeze information */}
       </div>
 
       <p className={styles.p}>
         <Image
-          style={{ transform: `rotate(${windDeg}deg)` }}
+          style={{ transform: `rotate(${windDeg}deg)` }} // Rotating the wind arrow icon
           src={"/static/images/wind-arrow-icon.svg"}
           height={imgHeight}
           width={imgWidth}
           alt="wind arrow icon"
         />{" "}
-        {windSpeed}m/s {windDegToString(windDeg)}
+        {windSpeed}m/s {windDegToString(windDeg)} {/* Displaying wind speed and direction */}
       </p>
       <p className={styles.p}>
         <Image
@@ -58,14 +65,14 @@ export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({
           width={imgWidth}
           alt="pressure icon"
         />
-        {pressure}hPa
+        {pressure}hPa {/* Displaying pressure */}
       </p>
-      <p className={styles.p}>Humidity: {humidity}%</p>
+      <p className={styles.p}>Humidity: {humidity}%</p> {/* Displaying humidity */}
       <p className={styles.p}>
         Dew Point: {dewPointTemp}
-        {scaleSymbol}
+        {scaleSymbol} {/* Displaying dew point temperature */}
       </p>
-      <p>Visibility: {(visibility / 1000).toFixed(1)}km</p>
+      <p>Visibility: {(visibility / 1000).toFixed(1)}km</p> {/* Displaying visibility */}
     </div>
   );
 };

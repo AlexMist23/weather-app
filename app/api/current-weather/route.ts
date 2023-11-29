@@ -1,17 +1,16 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { coord } = body;
+  const { coord } = await req.json();
 
-  const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?` +
-      new URLSearchParams({
-        lat: coord.lat,
-        lon: coord.lon,
-        appid: process.env.OPEN_WEATHER_API_KEY!,
-      })
-  );
-  let result = await response.json();
-  return NextResponse.json({ data: result });
+  const params = new URLSearchParams({
+    lat: String(coord.lat),
+    lon: String(coord.lon),
+    appid: process.env.OPEN_WEATHER_API_KEY!,
+  });
+
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?${params}`);
+  const data = await response.json();
+
+  return NextResponse.json({ data });
 }

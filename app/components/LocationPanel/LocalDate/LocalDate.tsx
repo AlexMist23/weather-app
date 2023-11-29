@@ -1,29 +1,23 @@
-"use client";
-
 /* Instruments */
 import type { currentWeather } from "@/lib/redux";
 
-import styles from "./localdate.module.css";
+export const LocalDate: React.FC<{ weather: currentWeather }> = ({ weather }) => {
+  const date = weather && new Date(+`${weather?.dt}000`); // Creating a Date object based on weather data
 
-export const LocalDate: React.FC<{ weather: currentWeather }> = ({
-  weather,
-}) => {
-  const currentWeather = weather;
-  const date = currentWeather && new Date(+`${currentWeather?.dt}000`);
-
-  function getLang() {
-    if (!navigator.languages) return navigator.languages[0];
-    return navigator.language;
-  }
+  const getLang = () => {
+    // Function to determine the language based on browser settings
+    return navigator.languages ? navigator.languages[0] : navigator.language;
+  };
 
   return (
-    <p className={styles.p}>
-      {`${date.toLocaleString(getLang(), {
-        month: "short",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-      })}`}
+    <p>
+      {date && // Conditional rendering to check if 'date' exists
+        date.toLocaleString(getLang(), {
+          month: "short",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
     </p>
   );
 };

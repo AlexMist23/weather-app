@@ -4,15 +4,16 @@
 import { useEffect } from "react";
 
 /* Instruments */
+import { useSelector, useDispatch } from "@/lib/redux";
+
 import {
-  useSelector,
-  useDispatch,
   selectLocation,
   selectCurrentWeather,
   setLocationByCoordAsync,
   setCurrentWeatherAsync,
 } from "@/lib/redux";
 
+/* CSS */
 import styles from "./locationpanel.module.css";
 
 /* Components */
@@ -28,17 +29,11 @@ export const LocationPanel = () => {
 
   useEffect(() => {
     if (!location.data) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let { latitude: lat, longitude: lon } = position.coords;
-        if (lat && lon) {
-          dispatch(setLocationByCoordAsync({ lat, lon }));
-        } else dispatch(setLocationByCoordAsync({ lat: 51.5072, lon: 0.1276 })); // London
+      navigator.geolocation.getCurrentPosition(({ coords }) => {
+        const { latitude: lat, longitude: lon } = coords;
+        dispatch(setLocationByCoordAsync({ lat, lon }));
       });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (location.data) {
+    } else if (location.data) {
       dispatch(
         setCurrentWeatherAsync({
           lat: location.data.lat,
@@ -46,7 +41,7 @@ export const LocationPanel = () => {
         })
       );
     }
-  }, [location.data]);
+  }, [dispatch, location.data]);
 
   return (
     <div className={styles.LocationPanel}>
@@ -54,7 +49,9 @@ export const LocationPanel = () => {
         <div className={styles.loader}></div>
       )}
 
-      {location.status === "succeeded" && <LocationName location={location.data!} />}
+      {location.status === "succeeded" && (
+        <LocationName location={location.data!} />
+      )}
       {location.status === "failed" && <p>{location.error}</p>}
 
       {weather.status === "succeeded" && (

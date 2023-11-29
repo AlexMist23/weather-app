@@ -1,5 +1,4 @@
 /* Instruments */
 import type { ReduxState } from "@/lib/redux";
 
-export const selectForecast5 = (state: ReduxState) =>
-  state.forecast5
+export const selectForecast5 = (state: ReduxState) => state.forecast5;

@@ -2,7 +2,7 @@
 
 ## Description
 
-The Weather App is a demonstration of my skills, designed to showcase my proficiency in web development. This application is built using Next.js, React, and React-Redux, leveraging the power of these technologies to provide weather information. It fetches real-time weather data from the OpenWeatherMap API (https://openweathermap.org/), managing and distributing the data seamlessly through Redux for efficient rendering within React components on pages served by Next.js. The Weather App combines functionality with an aesthetically pleasing, responsive design.
+The Weather App is a demonstration of my skills, designed to showcase my proficiency in web development. This application is built using Next.js, React, and React-Redux, leveraging the power of these technologies to provide weather information. It fetches real-time weather data from the OpenWeatherMap API (<https://openweathermap.org/>), managing and distributing the data seamlessly through Redux for efficient rendering within React components on pages served by Next.js. The Weather App combines functionality with an aesthetically pleasing, responsive design.
 
 ## Table of Contents
 
@@ -34,6 +34,7 @@ Setting up the Weather App is straightforward. Follow these steps:
    ```
 
 3. Start the application in development mode with the following command:
+
    ```bash
    npm run dev
    ```
@@ -65,7 +66,7 @@ The Weather App is built upon a foundational template provided by Next.js and Re
 
 For any inquiries or collaboration opportunities, you can reach me through the following:
 
-- Email: aleksander.misterkiewicz@outlook.com
+- Email: <aleksander.misterkiewicz@outlook.com>
 - LinkedIn: [Aleksander Misterkiewicz](https://www.linkedin.com/in/aleksandermst/)
 
 ## Roadmap
@@ -76,7 +77,7 @@ The future development of the Weather App will focus on enhancing the user exper
 
 - Aleksander Misterkiewicz
 
-## Acknowledgments
+## Acknowledgements
 
 I would like to express my gratitude to the supportive and innovative developer community.
 

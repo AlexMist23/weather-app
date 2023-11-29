@@ -1,3 +1,4 @@
+/* Styles for the location panel */
 .LocationPanel {
   width: 100%;
   display: flex;
@@ -6,6 +7,7 @@
   gap: 1em;
 }
 
+/* Loader animation */
 .loader {
   margin-top: 5vh;
   --line-width: 0.5em;
@@ -15,15 +17,16 @@
   border-bottom: var(--line-width) solid transparent;
   border-radius: 50%;
   aspect-ratio: 1/1;
+  /* Animation for spin */
   -webkit-animation: spin 2s cubic-bezier(0, 1.5, 1, 1.5) infinite;
   animation: spin 1s cubic-bezier(0.7, 0.5, 0.3, 0.5) infinite;
 }
 
+/* Keyframes for spin animation */
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
   }
-
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -33,7 +36,6 @@
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }

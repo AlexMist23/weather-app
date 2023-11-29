@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { city } = body;
-  const listLimit: number = 10;
-  const response = await fetch(
-    "https://api.openweathermap.org/geo/1.0/direct?" +
-      new URLSearchParams({
-        q: city,
-        limit: `${listLimit}`,
-        appid: process.env.OPEN_WEATHER_API_KEY!,
-      })
-  );
-  let result = await response.json();
-  return NextResponse.json({ data: result });
+  const { city } = await req.json();
+  const listLimit = 10;
+
+  const params = new URLSearchParams({
+    q: city,
+    limit: String(listLimit),
+    appid: process.env.OPEN_WEATHER_API_KEY!,
+  });
+
+  const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?${params}`);
+  const data = await response.json();
+
+  return NextResponse.json({ data });
 }

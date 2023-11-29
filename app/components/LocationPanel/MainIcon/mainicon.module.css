@@ -1,3 +1,4 @@
+/* Flex container with centered alignment */
 .div {
   display: flex;
   justify-content: center;
@@ -5,10 +6,12 @@
   width: 100%;
 }
 
-.img{
+/* Image style */
+.img {
   height: 6em;
 }
 
+/* Loader styles */
 .loader {
   margin: 10em 2em;
   height: 6em;
@@ -18,10 +21,11 @@
   border-bottom: 0.5em solid transparent;
   border-radius: 50%;
   aspect-ratio: 1/1;
-  -webkit-animation: spin 2s cubic-bezier(0, 1.5, 1, 1.5) infinite; /* Parabolic curve */
-  animation: spin 1s cubic-bezier(0.7, 0.5, 0.3, 0.5) infinite; /* Parabolic curve */
+  -webkit-animation: spin 2s cubic-bezier(0, 1.5, 1, 1.5) infinite;
+  animation: spin 1s cubic-bezier(0.7, 0.5, 0.3, 0.5) infinite;
 }
 
+/* Text paragraph styles */
 .p {
   text-align: center;
   display: block;
@@ -29,11 +33,11 @@
   margin-left: 0.2em;
 }
 
+/* Keyframes for spinning animation */
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
   }
-
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -43,7 +47,6 @@
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }

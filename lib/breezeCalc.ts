@@ -1,4 +1,5 @@
-export const breezeCalc = (wind: number) => {
+export const breezeCalc = (wind: number): string => {
+  // Array of wind speed ranges and their descriptions
   const windDescriptions = [
     { min: 0.0, max: 0.3, description: "Calm" },
     { min: 0.3, max: 1.6, description: "Light Air" },
@@ -14,12 +15,11 @@ export const breezeCalc = (wind: number) => {
     { min: 28.5, max: 32.7, description: "Storm" },
     { min: 32.7, max: Infinity, description: "Hurricane" },
   ];
+  
+  // Find the wind description that matches the wind speed
+  const matchedRange = windDescriptions.find(
+    (range) => wind >= range.min && wind < range.max
+  );
 
-  for (const range of windDescriptions) {
-    if (wind >= range.min && wind < range.max) {
-      return range.description;
-    }
-  }
-
-  return "";
+  return matchedRange ? matchedRange.description : "";
 };

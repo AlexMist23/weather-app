@@ -9,6 +9,6 @@ export const fetchForecast5 = async (coord: {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ coord }),
   });
-  let result = await response.json();
+  const result = await response.json();
   return result;
 };

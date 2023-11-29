@@ -11,8 +11,6 @@ export const fetchLocationByCoord = async (
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ lon, lat }),
   });
-
-  let result = await response.json();
-
+  const result = await response.json();
   return result;
 };

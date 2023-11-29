@@ -4,12 +4,20 @@ import { createSlice } from "@reduxjs/toolkit";
 /* Instruments */
 import { setForecast5Async } from "./thunks";
 
+//State
+export interface forecast5SliceState {
+  data: forecast5Data | null;
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+}
+
 const initialState: forecast5SliceState = {
   data: null,
   status: "idle",
   error: null,
 };
 
+// Slice
 export const forecast5Slice = createSlice({
   name: "forecast5",
   initialState,
@@ -27,24 +35,17 @@ export const forecast5Slice = createSlice({
       })
       .addCase(setForecast5Async.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message!;
+        state.error = action.error.message ?? "Unknown error";
       });
   },
 });
 
-/* Types */
-
-export interface forecast5SliceState {
-  data: forecast5Data | null;
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null;
-}
-
+// Types
 export interface forecast5Data {
   cod: string; // Internal parameter
   message: number; // Internal parameter
   cnt: number; // A number of timestamps returned in the API response
-  list: Array<forecast5ListElement>;
+  list: forecast5ListElement[];
   city: forecast5City;
 }
 
@@ -80,10 +81,12 @@ interface forecast5ListElement {
   visibility: number; // Average visibility, metres. The maximum value of the visibility is 10km
   pop: 0.32; // Probability of precipitation. The values of the parameter vary between 0 and 1, where 0 is equal to 0%, 1 is equal to 100%
   rain: {
-    "3h": number; // Rain volume for last 3 hours, mm
+    "1h": number | undefined; // Rain volume for last 3 hours, mm
+    "3h": number | undefined; // Rain volume for last 3 hours, mm
   };
   snow: {
-    "3h": number; // Snow volume for last 3 hours, mm
+    "1h": number | undefined; // Rain volume for last 3 hours, mm
+    "3h": number | undefined; // Snow volume for last 3 hours, mm
   };
   sys: {
     pod: "n" | "d"; // Part of the day (n - night, d - day)

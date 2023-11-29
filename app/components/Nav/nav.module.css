@@ -1,19 +1,18 @@
 .nav {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 2em;
   min-width: 17em;
+  position: relative;
 }
 
 .link {
-  background-color: white;
   display: block;
-  text-align: center;
-  line-height: 2em;
   width: clamp(5em, 100%, 10em);
-
+  line-height: 2em;
+  text-align: center;
+  background-color: white;
 }
 
 .link:hover,
@@ -22,9 +21,10 @@
   border-color: var(--berkeley-blue-light);
 }
 
-.link:nth-child(1) {
+.link:first-child {
   border-radius: 0.1em 0 0 0.1em;
 }
-.link:nth-last-child(1) {
+
+.link:last-child {
   border-radius: 0 0.1em 0.1em 0;
 }
