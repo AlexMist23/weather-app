@@ -12,7 +12,7 @@
   display: block;
   text-align: center;
   line-height: 2em;
-  width: clamp(5em, 100%, 14em);
+  width: clamp(5em, 100%, 10em);
 
 }
 

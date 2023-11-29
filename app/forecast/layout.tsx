@@ -13,11 +13,11 @@ export default function ForecastLayout({
 }) {
   return (
     <>
-      <section className={styles.leftPanel}>
+      <section className={`${styles.section} ${styles.left}`}>
         <SearchBar />
         <LocationPanel />
       </section>
-      <section className={styles.rightPanel}>
+      <section className={`${styles.section} ${styles.right}`}>
         <Nav />
         {children}
       </section>
