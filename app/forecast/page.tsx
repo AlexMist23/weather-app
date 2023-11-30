@@ -3,7 +3,7 @@
 import { redirect, usePathname } from "next/navigation";
 
 export default function ForecastPage() {
-  redirect('/forecast/forecast5')
+  redirect("/forecast/forecast5");
   return <></>;
 }
 

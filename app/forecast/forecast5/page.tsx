@@ -6,3 +6,7 @@ export default function VerifyPage() {
     </>
   );
 }
+
+export const metadata = {
+  title: "Weather App",
+};
