@@ -29,10 +29,7 @@ export const LocationPanel = () => {
 
   useEffect(() => {
     if (!location.data) {
-      navigator.geolocation.getCurrentPosition(({ coords }) => {
-        const { latitude: lat, longitude: lon } = coords;
-        dispatch(setLocationByCoordAsync({ lat, lon }));
-      });
+      dispatch(setLocationByCoordAsync({ lat: 51.5072, lon: 0.1276 }));
     } else if (location.data) {
       dispatch(
         setCurrentWeatherAsync({
@@ -49,7 +46,7 @@ export const LocationPanel = () => {
         <div className={styles.loader}></div>
       )}
 
-      {location.status === "succeeded" && (
+      {location.status === "succeeded" && location.data && (
         <LocationName location={location.data!} />
       )}
       {location.status === "failed" && <p>{location.error}</p>}
