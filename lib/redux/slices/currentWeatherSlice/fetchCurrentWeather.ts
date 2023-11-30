@@ -1,9 +1,9 @@
-import { CurrentWeather } from "./currentWeatherSlice";
+import { CurrentWeatherData } from "./currentWeatherSlice";
 
 export const fetchCurrentWeather = async (coord: {
   lon: number;
   lat: number;
-}): Promise<{ data: CurrentWeather }> => {
+}): Promise<{ data: CurrentWeatherData }> => {
   const response = await fetch("/api/current-weather", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
