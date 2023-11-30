@@ -1,7 +1,7 @@
 /* Instruments */
-import type { currentWeather } from "@/lib/redux";
+import type { CurrentWeatherData } from "@/lib/redux";
 
-export const LocalDate: React.FC<{ weather: currentWeather }> = ({ weather }) => {
+export const LocalDate: React.FC<{ weather: CurrentWeatherData }> = ({ weather }) => {
   const date = weather && new Date(+`${weather?.dt}000`); // Creating a Date object based on weather data
 
   const getLang = () => {
