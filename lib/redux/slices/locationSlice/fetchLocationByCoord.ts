@@ -16,5 +16,6 @@ export const fetchLocationByCoord = async (
     throw new Error(errorResponse.error);
   }
   const result = await response.json();
+  if (!result.data) throw Error("Error: No data");
   return result;
 };
