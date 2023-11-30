@@ -11,6 +11,10 @@ export const fetchLocationByCoord = async (
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ lon, lat }),
   });
+  if (!response.ok) {
+    const errorResponse = await response.json();
+    throw new Error(errorResponse.error);
+  }
   const result = await response.json();
   return result;
 };
