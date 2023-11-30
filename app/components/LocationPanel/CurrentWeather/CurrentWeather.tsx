@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSelector } from "@/lib/redux";
 import {
   selectTemperatureScale,
-  type currentWeather,
+  type CurrentWeatherData,
 } from "@/lib/redux";
 
 import { breezeCalc } from "@/lib/breezeCalc"; // Importing breeze calculation function
@@ -17,7 +17,7 @@ import { windDegToString } from "@/lib/windDegToString"; // Importing wind degre
 import styles from "./currentweather.module.css"; // Importing styles for the current weather component
 
 
-export const CurrentWeather: React.FC<{ weather: currentWeather }> = ({ 
+export const CurrentWeather: React.FC<{ weather: CurrentWeatherData }> = ({ 
   weather,
 }) => {
   const currentWeather = weather!; // Assigning weather data to 'currentWeather' variable

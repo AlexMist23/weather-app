@@ -6,7 +6,7 @@ import { setCurrentWeatherAsync } from "./thunks";
 
 // State
 export interface CurrentWeatherState {
-  data: CurrentWeather | null;
+  data: CurrentWeatherData | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -23,7 +23,7 @@ export const currentWeatherSlice = createSlice({
   initialState,
   reducers: {
     resetState: () => initialState,
-    setCurrentWeather: (state, action: PayloadAction<CurrentWeather>) => {
+    setCurrentWeather: (state, action: PayloadAction<CurrentWeatherData>) => {
       state.status = "succeeded";
       state.data = action.payload;
     },
@@ -49,7 +49,7 @@ export const currentWeatherSlice = createSlice({
 });
 
 // Types
-export interface CurrentWeather {
+export interface CurrentWeatherData {
   coord: {
     lon: number; // Longitude of the location
     lat: number; // Latitude of the location

@@ -3,13 +3,13 @@ import Image from "next/image";
 
 /* Instruments */
 import { useSelector } from "@/lib/redux";
-import { selectTemperatureScale, type currentWeather } from "@/lib/redux";
+import { selectTemperatureScale, type CurrentWeatherData } from "@/lib/redux";
 import { tempConvert } from "@/lib/tempConvert";
 
 /* CSS */
 import styles from "./mainicon.module.css";
 
-export const MainIcon: React.FC<{ weather: currentWeather }> = ({ weather }) => {
+export const MainIcon: React.FC<{ weather: CurrentWeatherData }> = ({ weather }) => {
   const { name: tempScale, symbol: scaleSymbol } = useSelector(selectTemperatureScale);
   const { icon: iconName, main: iconAlt } = weather.weather[0];
   const { temp } = weather.main;
