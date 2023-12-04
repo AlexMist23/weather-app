@@ -22,4 +22,7 @@
     width: 100%;
     height: auto;
   }
+  .right {
+    padding: 1em 0;
+  }
 }

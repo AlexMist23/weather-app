@@ -14,6 +14,10 @@
   border-radius: 0.1em;
 }
 
+.input {
+  background: none;
+}
+
 .button {
   width: 2em;
   color: var(--gray-dark);

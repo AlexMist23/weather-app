@@ -1,0 +1,31 @@
+.ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    padding: 1em;
+    text-align: center;
+    width: 6em;
+}
+
+.li p {
+}
+
+.li p:nth-child(1) {
+    font-size: 1.5em;
+}
+
+.li p:nth-child(2) {
+    font-size: 1em;
+}
+
+.liActive{
+    background-color: #b8c2ce;
+}
