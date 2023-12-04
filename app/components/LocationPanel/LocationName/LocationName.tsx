@@ -8,7 +8,7 @@ import { type LocationData } from "@/lib/redux";
 import styles from "./locationname.module.css";
 
 
-export const LocationName: React.FC<{ location: locationData }> = ({ location }) => {
+export const LocationName: React.FC<{ location: LocationData }> = ({ location }) => {
   const { name, country, state } = location;
 
   return (
