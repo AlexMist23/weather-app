@@ -6,20 +6,21 @@ import { useSelector, useDispatch } from "@/lib/redux";
 import {
   selectLocation,
   selectForecast5,
+  selectForecast5DateList,
   setForecast5Async,
 } from "@/lib/redux";
 
 import { WeekChart } from "./WeekChart/WeekChart";
 
 import styles from "./forecast5.module.css";
+import { WeekList } from "./WeekList/WeekList";
 
 export const Forecast5 = () => {
   const dispatch = useDispatch(); // Initializing useDispatch for Redux actions
   const location = useSelector(selectLocation); // Accessing location state
-  const { data: forecastData, status: forecastStatus, error } = useSelector(
-    selectForecast5
-  ); // Destructuring forecast data, status, and error from Redux state
-
+  const forecastListSorted = useSelector(selectForecast5DateList)
+  const { data: forecastData, status: forecastStatus, error } = useSelector(selectForecast5);
+  
   useEffect(() => {
     const fetchData = () => {
       if (location.status === "succeeded" && location.data) {
@@ -34,15 +35,17 @@ export const Forecast5 = () => {
   const renderContent = () => {
     switch (forecastStatus) {
       case "loading":
-        return <div className={styles.loader}></div>; // Rendering a loader if forecast data is loading
+        return <div className={styles.loader}></div>;
       case "succeeded":
-        return <WeekChart />; // Rendering the WeekChart component when forecast data is successfully fetched
+        return <>
+        <WeekChart data={forecastData!}/>
+        <WeekList sortedList={forecastListSorted!}/>
+        </>;
       case "failed":
-        return <p>{error}</p>; // Displaying an error message if fetching forecast data fails
+        return <p>{error}</p>;
       default:
         return null;
     }
   };
-
   return <>{renderContent()}</>; // Rendering the content based on forecastStatus
 };
