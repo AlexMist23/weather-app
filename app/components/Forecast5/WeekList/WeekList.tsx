@@ -4,8 +4,7 @@
 import { useState, useEffect } from "react";
 
 /* Instruments */
-import type { Forecast5Data } from "@/lib/redux";
-import  { useSelector, selectForecast5DateList } from "@/lib/redux";
+import type {Forecast5ListElement } from "@/lib/redux";
 
 /* CSS */
 import styles from "./weeklist.module.css";
@@ -47,5 +46,5 @@ export const WeekList: React.FC<WeekListProps> = ({ sortedList }) => {
 };
 
 interface WeekListProps {
-  sortedList: Record<string, Record<string, Forecast5Data[]>>;
+  sortedList: Record<string, Record<string, Forecast5ListElement[]>>;
 }
