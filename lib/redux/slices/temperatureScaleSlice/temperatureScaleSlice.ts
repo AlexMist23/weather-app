@@ -1,7 +1,7 @@
 /* Core */
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: temperatureScaleSliceState = {
+const initialState: TemperatureScaleSliceState = {
   name: "celsius",
   symbol: "°C",
 };
@@ -24,7 +24,7 @@ export const temperatureScaleSlice = createSlice({
 
 /* Types */
 
-export interface temperatureScaleSliceState {
+export interface TemperatureScaleSliceState {
   name: "kelvin" | "celsius" | "fahrenheit";
   symbol: "K" | "°C" | "°F";
 }

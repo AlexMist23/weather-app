@@ -2,19 +2,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 /* Types */
-import type { locationData } from "../..";
+import type { LocationData } from "../..";
 
 /* Instruments */
 import { setLocationListAsync } from "./thunks";
 
 // State
-export interface locationListSliceState {
-  data: locationData[] | [];
+export interface LocationListSliceState {
+  data: LocationData[] | [];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
 
-const initialState: locationListSliceState = {
+const initialState: LocationListSliceState = {
   data: [],
   status: "idle",
   error: null,

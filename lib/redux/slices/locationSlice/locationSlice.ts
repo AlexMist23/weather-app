@@ -5,13 +5,13 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { setLocationByCoordAsync } from "./thunks";
 
 // State
-export interface locationSliceState {
-  data: locationData | null;
+export interface LocationSliceState {
+  data: LocationData | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
 
-const initialState: locationSliceState = {
+const initialState: LocationSliceState = {
   data: null,
   status: "idle",
   error: null,
@@ -22,7 +22,7 @@ export const locationSlice = createSlice({
   name: "location",
   initialState,
   reducers: {
-    setLocation: (state, action: PayloadAction<locationData>) => {
+    setLocation: (state, action: PayloadAction<LocationData>) => {
       state.data = action.payload;
       state.status = "succeeded";
     },
@@ -32,7 +32,7 @@ export const locationSlice = createSlice({
       .addCase(setLocationByCoordAsync.pending, (state) => {
         state.status = "idle";
       })
-      .addCase(setLocationByCoordAsync.fulfilled, (state, action: PayloadAction<locationData>) => {
+      .addCase(setLocationByCoordAsync.fulfilled, (state, action: PayloadAction<LocationData>) => {
         state.status = "succeeded";
         state.data = action.payload;
       })
@@ -44,7 +44,7 @@ export const locationSlice = createSlice({
 });
 
 // Types
-export interface locationData {
+export interface LocationData {
   name: string; // Name of the found location 
   country: string; // Country of the found location 
   state: string | undefined; // (where available) State of the found location 

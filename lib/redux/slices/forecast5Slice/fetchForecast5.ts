@@ -1,9 +1,9 @@
-import { type forecast5Data } from "./forecast5Slice";
+import { type Forecast5Data } from "./forecast5Slice";
 
 export const fetchForecast5 = async (coord: {
   lon: number;
   lat: number;
-}): Promise<{ data: forecast5Data }> => {
+}): Promise<{ data: Forecast5Data }> => {
   const response = await fetch("/api/forecast5", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

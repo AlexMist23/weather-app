@@ -5,13 +5,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { setForecast5Async } from "./thunks";
 
 //State
-export interface forecast5SliceState {
-  data: forecast5Data | null;
+export interface Forecast5SliceState {
+  data: Forecast5Data | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
 
-const initialState: forecast5SliceState = {
+const initialState: Forecast5SliceState = {
   data: null,
   status: "idle",
   error: null,
@@ -41,15 +41,15 @@ export const forecast5Slice = createSlice({
 });
 
 // Types
-export interface forecast5Data {
+export interface Forecast5Data {
   cod: string; // Internal parameter
   message: number; // Internal parameter
   cnt: number; // A number of timestamps returned in the API response
-  list: forecast5ListElement[];
-  city: forecast5City;
+  list: Forecast5ListElement[];
+  city: Forecast5City;
 }
 
-interface forecast5ListElement {
+export interface Forecast5ListElement {
   dt: number; // Time of data forecasted, unix, UTC
   main: {
     temp: number; // Temperature. Unit Default: Kelvin
@@ -94,7 +94,7 @@ interface forecast5ListElement {
   dt_txt: string; // Time of data forecasted, ISO, UTC
 }
 
-interface forecast5City {
+interface Forecast5City {
   id: number; // City ID
   name: string; // City name
   coord: {

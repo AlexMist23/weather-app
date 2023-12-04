@@ -12,7 +12,7 @@ import {
   locationListSlice,
   selectLocationList,
 } from "@/lib/redux";
-import type { locationData } from "@/lib/redux";
+import type { LocationData } from "@/lib/redux";
 
 /* CSS */
 import styles from "./searchbar.module.css";
@@ -43,7 +43,7 @@ export const SearchBar = () => {
 
   // Handle click on location list item
   const handleLiClick = useCallback(
-    (location: locationData) => {
+    (location: LocationData) => {
       dispatch(locationSlice.actions.setLocation(location));
       clearLocationList();
       setCityInput("");
@@ -148,7 +148,7 @@ export const SearchBar = () => {
                 ref={ulRef}
               >
                 {locationList?.data.map(
-                  (location: locationData, index: number) => (
+                  (location: LocationData, index: number) => (
                     <li
                       className={`${styles.li} ${
                         index === selectedPosition ? styles.selected : ""
