@@ -5,6 +5,7 @@ import {
   currentWeatherSlice,
   temperatureScaleSlice,
   forecast5Slice,
+  activeDateSlice,
 } from "./slices";
 
 export const reducer = {
@@ -13,4 +14,5 @@ export const reducer = {
   currentWeather: currentWeatherSlice.reducer,
   temperatureScale: temperatureScaleSlice.reducer,
   forecast5: forecast5Slice.reducer,
+  activeDate: activeDateSlice.reducer,
 };
