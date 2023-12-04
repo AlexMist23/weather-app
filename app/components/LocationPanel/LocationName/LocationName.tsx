@@ -2,7 +2,7 @@
 import React from "react";
 
 /* Instruments */
-import { type locationData } from "@/lib/redux";
+import { type LocationData } from "@/lib/redux";
 
 /* CSS */
 import styles from "./locationname.module.css";
