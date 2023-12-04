@@ -1,10 +1,10 @@
-import { type locationData } from "../..";
+import { type LocationData } from "../..";
 
 export const fetchLocationByCoord = async (
   lon: number,
   lat: number
 ): Promise<{
-  data: locationData;
+  data: LocationData;
 }> => {
   const response = await fetch("/api/location-by-coord", {
     method: "POST",
