@@ -3,18 +3,12 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 // State
 export interface activeDateState {
-  year: number,
-  month: number,
-  day: number,
-  hour: number,
+  dt: number
 }
 
-const initialState = (date = new Date()) => ({
-  year: date.getFullYear(),
-  month: date.getMonth(),
-  day: date.getDate(),
-  hour: date.getHours(),
-});
+const initialState = {
+  dt: new Date().getTime()
+};
 
 // Slice
 export const activeDateSlice = createSlice({
@@ -22,16 +16,16 @@ export const activeDateSlice = createSlice({
   initialState,
   reducers: {
     setYear: (state, action:PayloadAction<number>) => {
-      state.year = action.payload;
+      state.dt = new Date(state.dt).setFullYear(action.payload)
     },
     setMonth: (state, action:PayloadAction<number>) => {
-      state.month = action.payload;
+      state.dt = new Date(state.dt).setMonth(action.payload)
     },
     setDay: (state, action:PayloadAction<number>) => {
-      state.day = action.payload;
+      state.dt = new Date(state.dt).setDate(action.payload)
     },
     setHour: (state, action:PayloadAction<number>) => {
-      state.hour = action.payload;
+      state.dt = new Date(state.dt).setHours(action.payload)
     },
   },
 });
