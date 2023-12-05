@@ -1,3 +1,6 @@
+/* Core */
+import {format} from "date-fns";
+
 /* Instruments */
 import type { ReduxState, Forecast5ListElement } from "@/lib/redux";
 
@@ -10,7 +13,7 @@ export const selectForecast5DateList = (state: ReduxState) =>
       obj: Forecast5ListElement
     ) => {
       const dt = new Date(obj.dt * 1000);
-      const dateKey = dt.toLocaleDateString();
+      const dateKey = format(dt, 'yyyy-MM-dd');
       const dayKey = dt.getDate().toString();
 
       acc[dateKey] = acc[dateKey] || {};
