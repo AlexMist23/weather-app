@@ -30,7 +30,7 @@ Setting up the Weather App is straightforward. Follow these steps:
    npm install
    ```
 
-2. Add .env.local file with your OpenWeatherMap API key:
+2. Add .env.local file in root folder with your OpenWeatherMap API key:
 
    ```bash
    OPEN_WEATHER_API_KEY="YOUR_API_KEY"
