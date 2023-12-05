@@ -1,10 +1,12 @@
 # Weather App
 
+## Demo - [https://weather-appx.vercel.app](https://weather-appx.vercel.app)
+
 ## Description
 
 The Weather App is a demonstration of my skills, designed to showcase my proficiency in web development. This application is built using Next.js, React, and React-Redux, leveraging the power of these technologies to provide weather information. It fetches real-time weather data from the OpenWeatherMap API (<https://openweathermap.org/>), managing and distributing the data seamlessly through Redux for efficient rendering within React components on pages served by Next.js. The Weather App combines functionality with an aesthetically pleasing, responsive design.
 
-## Table of Contents
+## List of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -13,7 +15,6 @@ The Weather App is a demonstration of my skills, designed to showcase my profici
 - [Credits](#credits)
 - [Contact](#contact)
 - [Roadmap](#roadmap)
-- [Author](#author)
 - [Acknowledgements](#acknowledgements)
 - [Inspiration](#inspiration)
 
@@ -21,16 +22,18 @@ The Weather App is a demonstration of my skills, designed to showcase my profici
 
 Setting up the Weather App is straightforward. Follow these steps:
 
-1. Navigate to the application's root directory:
 
-   ```bash
-   cd weather-app
-   ```
 
-2. Begin by installing the necessary npm modules:
+1. Begin by installing the necessary npm modules:
 
    ```bash
    npm install
+   ```
+
+2. Add .env.local file in root folder with your OpenWeatherMap API key:
+
+   ```bash
+   OPEN_WEATHER_API_KEY="YOUR_API_KEY"
    ```
 
 3. Start the application in development mode with the following command:
@@ -66,16 +69,11 @@ The Weather App is built upon a foundational template provided by Next.js and Re
 
 For any inquiries or collaboration opportunities, you can reach me through the following:
 
-- Email: <aleksander.misterkiewicz@outlook.com>
 - LinkedIn: [Aleksander Misterkiewicz](https://www.linkedin.com/in/aleksandermst/)
 
 ## Roadmap
 
 The future development of the Weather App will focus on enhancing the user experience by introducing interactive and informative graphs to present broadcast data in a clear and visually stunning manner.
-
-## Author
-
-- Aleksander Misterkiewicz
 
 ## Acknowledgements
 
