@@ -15,7 +15,6 @@ The Weather App is a demonstration of my skills, designed to showcase my profici
 - [Credits](#credits)
 - [Contact](#contact)
 - [Roadmap](#roadmap)
-- [Author](#author)
 - [Acknowledgements](#acknowledgements)
 - [Inspiration](#inspiration)
 
@@ -70,16 +69,11 @@ The Weather App is built upon a foundational template provided by Next.js and Re
 
 For any inquiries or collaboration opportunities, you can reach me through the following:
 
-- Email: <aleksander.misterkiewicz@outlook.com>
 - LinkedIn: [Aleksander Misterkiewicz](https://www.linkedin.com/in/aleksandermst/)
 
 ## Roadmap
 
 The future development of the Weather App will focus on enhancing the user experience by introducing interactive and informative graphs to present broadcast data in a clear and visually stunning manner.
-
-## Author
-
-- Aleksander Misterkiewicz
 
 ## Acknowledgements
 
