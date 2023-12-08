@@ -69,7 +69,7 @@ The Weather App is built upon a foundational template provided by Next.js and Re
 
 For any inquiries or collaboration opportunities, you can reach me through the following:
 
-- LinkedIn: [Aleksander Misterkiewicz](https://www.linkedin.com/in/aleksandermst/)
+- LinkedIn: [linkedin.com/in/aleksandermst](https://www.linkedin.com/in/aleksandermst/)
 
 ## Roadmap
 
